@@ -1,0 +1,6 @@
+*.pro.user
+build-*
+test*
+    
+templates/*
+examples/*
