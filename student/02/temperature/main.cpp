@@ -9,8 +9,8 @@ int main()
     cout << "Enter a temperature: ";
     cin >> original_temperature;
 
-    cout << original_temperature << " degrees Celsius is " << original_temperature * 1.8 + 32 << " degrees Farenheit" << endl;
-    cout << original_temperature << " degrees Farenheit is " << (original_temperature - 32) / 1.8 << " degrees Celsius" << endl;
+    cout << original_temperature << " degrees Celsius is " << original_temperature * 1.8 + 32 << " degrees Fahrenheit" << endl;
+    cout << original_temperature << " degrees Fahrenheit is " << (original_temperature - 32) / 1.8 << " degrees Celsius" << endl;
 
     return 0;
 }
