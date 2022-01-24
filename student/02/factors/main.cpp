@@ -35,6 +35,6 @@ int main()
 
        }
     }
-    cout << number << "=" << factor1 << "*" << factor2 << endl;
+    cout << number << " = " << factor1 << " * " << factor2 << endl;
     return 0;
 }
