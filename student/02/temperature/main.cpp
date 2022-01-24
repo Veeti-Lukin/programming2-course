@@ -4,9 +4,12 @@ using namespace std;
 
 int main()
 {
-    cout << "Enter a temperature: ";
+    int original_temperature = 0;
 
-    // Write your code here
+    cout << "Enter a temperature: ";
+    cin >> original_temperature;
+
+    cout << original_temperature << " degrees Celsius is " << (original_temperature * 1,8 + 32) << "degrees Farenheit" << endl;
 
     return 0;
 }
