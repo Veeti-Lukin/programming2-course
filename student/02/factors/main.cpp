@@ -15,7 +15,8 @@ int main()
     }
 
     int shortest_distance = number;
-    int factor1, factor2;
+    int factor1 = 0;
+    int factor2 = 0;
 
     for (int i=1; i < number; i++) {
        int n = number / i;
