@@ -1,5 +1,6 @@
 #include <iostream>
 
+const int ZIP = 3;
 
 int main()
 {
@@ -8,8 +9,13 @@ int main()
     std::cout << "How many numbers would you like to have? ";
     std::cin >> number_amount;
 
-    for (int i=0; i < number_amount+1; ++i) {
-        std::cout << i << std::endl;
+    for (int i=1; i < number_amount+1; ++i) {
+        if (i % ZIP == 0) {
+            std::cout << "zip" << std::endl;
+        }
+        else {
+            std::cout << i << std::endl;
+        }
     }
     return 0;
 }
