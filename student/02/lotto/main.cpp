@@ -36,7 +36,7 @@ int main()
     }
 
     if (drawn_balls > total_balls) {
-        cout << "The maxium number of drawn balls is the total amount of balls." << endl;
+        cout << "The maximum number of drawn balls is the total amount of balls." << endl;
         return EXIT_SUCCESS;
     }
 
