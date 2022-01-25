@@ -1,26 +1,28 @@
+// Example program
 #include <iostream>
+#include <string>
 
-using namespace std;
+long int factorial (int number) {
+    long int number_factorial = 0;
+
+    if (number == 0) {
+        return 1;
+    }
+
+    for (int i = 1; i < number; --i) {
+        number_factorial *= i;
+
+    }
+
+    return number_factorial;
+}
 
 int main()
 {
-    int total_balls = 0;
-    int drawn_balls = 0;
+    while (true) {
+        int number = 0;
+        std::cin >> number;
+        std::cout << factorial(number) << std::endl;
+  }
 
-    cout << "Enter the total number of lottery balls: ";
-    cin >> total_balls;
-    cout << "Enter the number of drawn balls: ";
-    cin >> drawn_balls;
-
-    if (total_balls < 0 or drawn_balls < 0) {
-        cout << "The number of balls must be a positive number." << endl;
-        return EXIT_FAILURE;
-    }
-
-    if (drawn_balls > total_balls) {
-        cout << "The maxium number of drawn balls is the total amount of balls." << endl;
-        return EXIT_FAILURE;
-    }
-
-    return EXIT_SUCCESS;
 }
