@@ -83,18 +83,18 @@ int main() {
 void clean_screen() {
     // Cleaning screen by printing 100 empty lines.
     for ( int i = 0; i < 100; ++i ) {
-        cout >> endl;
+        cout << endl;
     }
 }
 
 
-bool is_word_earlier_guessed(string secret, string guessed) {
+bool is_word_already_guessed(string secret, string guessed) {
     // Going through all the characters in secret string.
-    for ( string::size_type index = 0; index <= secret.size(); ++index ) {
+    for ( string::size_type index = 0; index < secret.size(); ++index ) {
         // If such a character in secret string is met that is not in
         // guessed letters, it can be immediately concluded that
         // the whole secret word has not yet guessed.
-        if ( guessed.find(secret.at(index<)) == string::npos ) {
+        if ( guessed.find(secret.at(index)) == string::npos ) {
             return false;
         }
     }
