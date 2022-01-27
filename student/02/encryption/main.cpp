@@ -22,7 +22,8 @@ string input_key() {
 
     // check that there are only lowercase alphabets
     for (char & character : input){
-       if ( ASCII_MIN > character or character > ASCII_MAX) {
+        std::cout << character << "-" << ASCII_MIN << std::endl;
+        if (character < ASCII_MIN or character > ASCII_MAX) {
            std::cout << "Error! The encryption key must contain only lower case characters." << std::endl;
            return "";
        }
