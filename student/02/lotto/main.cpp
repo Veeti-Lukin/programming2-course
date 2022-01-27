@@ -2,7 +2,7 @@
 
 using namespace std;
 
-long int factorial(int number) {
+long long int factorial(int number) {
     long int number_factorial = 1;
 
     if (number == 0) {
@@ -16,7 +16,7 @@ long int factorial(int number) {
     return number_factorial;
 }
 
-long int all_combinations(int total, int drawn) {
+long long int all_combinations(int total, int drawn) {
     return factorial(total) / (factorial(total - drawn) * factorial(drawn));
 }
 
