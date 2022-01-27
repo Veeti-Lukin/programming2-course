@@ -22,7 +22,6 @@ string input_key() {
 
     // check that there are only lowercase alphabets
     for (char & character : input){
-        std::cout << character << "-" << ASCII_MIN << std::endl;
         if (character < ASCII_MIN or character > ASCII_MAX) {
            std::cout << "Error! The encryption key must contain only lower case characters." << std::endl;
            return "";
@@ -34,6 +33,20 @@ string input_key() {
             std::cout << "Error! The encryption key must contain all alphabets a-z." << std::endl;
             return "";
         }
+    }
+    return input;
+}
+
+string input_text() {
+    string input = "";
+    std::getline(std::cin, input);
+
+    // check that there are only lowercase alphabets
+    for (char & character : input){
+        if (character < ASCII_MIN or character > ASCII_MAX) {
+           std::cout << "Error! The text to be encrypted must contain only lower case characters." << std::endl;
+           return "";
+       }
     }
     return input;
 }
@@ -60,8 +73,9 @@ int main()
         return EXIT_FAILURE;
 
     std::cout << "Enter the text to be encrypted: ";
-    string text = "";
-    std::getline(std::cin, text);
+    string text = input_text();
+    if (text == "")
+        return EXIT_FAILURE;
 
     encrypt(text, encryption_key);
     std::cout << "Encrypted text: " << text << std::endl;
