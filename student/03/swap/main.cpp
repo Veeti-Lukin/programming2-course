@@ -2,7 +2,12 @@
 #include <iostream>
 
 // Write your swap function here.
-
+void swap(int& number1, int& number2) {
+    //swaps values of parameter number 1 and number 2
+    int temp = number1;
+    number1 = number2;
+    number2 = temp;
+}
 
 
 #ifndef UNIT_TESTING
