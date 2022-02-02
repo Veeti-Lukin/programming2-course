@@ -4,8 +4,9 @@
 
 using namespace std;
 
-void produce_random_numbers(unsigned int lower, unsigned int upper)
-{
+void produce_random_numbers(unsigned int lower, unsigned int upper) {
+    /* generates random numbers in range of parameter <lower> and <upper>
+       asks user for seed number and goes on generating new number until user inputs "q" */
     int seed;
     cout << "Enter a seed value: ";
     cin >> seed;
