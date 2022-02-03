@@ -2,7 +2,7 @@
 #include <iostream>
 
 Account::Account(const std::string& owner, bool has_credit):
-    has_credit(has_credit), iban_(""), owner_(owner)
+    has_credit_(has_credit), credit_limit_(0), iban_(""), owner_(owner)
 {
     generate_iban();
 }
@@ -12,9 +12,16 @@ void Account::print() const
 
 }
 
-bool Account::set_credit_limit(int amount)
-{
+bool Account::set_credit_limit(int amount) {
+    // sets credit limit to card account if attribute < has_credit > is set to true
+    // returns true if succeed, false otherwise
+    if (!has_credit_)
+        return false;
+    if (amount <= 0)
+        return false;
 
+    credit_limit_ = amount;
+    return true;
 }
 
 bool Account::save_money(int amount)
