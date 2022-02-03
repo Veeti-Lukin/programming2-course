@@ -2,14 +2,14 @@
 #include <iostream>
 
 Account::Account(const std::string& owner, bool has_credit):
-    has_credit_(has_credit), credit_limit_(0), iban_(""), owner_(owner)
+    has_credit_(has_credit), credit_limit_(0), saldo_(0), iban_(""), owner_(owner)
 {
     generate_iban();
 }
 
-void Account::print() const
-{
-
+void Account::print() const {
+    // prints information about the account
+    std::cout << owner_ << " : " << iban_ << " : " << saldo_ << " euros" << std::endl;
 }
 
 bool Account::set_credit_limit(int amount) {

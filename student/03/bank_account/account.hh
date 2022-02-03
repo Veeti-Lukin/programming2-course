@@ -29,7 +29,9 @@ private:
     static int running_number_;
 
     // More attributes/methods
-    bool has_credit;
+    bool has_credit_;
+    int credit_limit_;
+    int saldo_;
     std::string iban_;
     std::string owner_;
 };
