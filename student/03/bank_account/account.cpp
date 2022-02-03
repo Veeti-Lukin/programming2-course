@@ -57,9 +57,15 @@ bool Account::take_money(int amount) {
     return true;
 }
 
-bool Account::transfer_to(Account other, int amount)
-{
-
+bool Account::transfer_to(Account& other, int amount) {
+    //trasfers money from this account to *other*
+    // mehtod <take_money>> will handle all error cheking before adding money to *other*
+    if (!take_money(amount)) {
+        std::cout << "Transfer from " << iban_ <<  " failed" << std::endl;
+        return false;
+    }
+    other.save_money(amount);
+    return true;
 }
 
 // Setting initial value for the static attribute running_number_

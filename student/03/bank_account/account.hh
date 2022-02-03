@@ -14,7 +14,7 @@ public:
     bool set_credit_limit(int amount);
     bool save_money(int amount);
     bool take_money(int amount);
-    bool transfer_to(Account other, int amount);
+    bool transfer_to(Account& other, int amount);
 
 private:
     // Generates IBAN (based on running_number_ below).
