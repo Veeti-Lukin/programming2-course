@@ -27,7 +27,7 @@ bool Account::set_credit_limit(int amount) {
 }
 
 bool Account::save_money(int amount) {
-    // adds money to account if parameter *amount* is positivie
+    // adds *amount* of money to account if parameter *amount* is positivie
 
     if (amount <= 0)
         return false;
@@ -36,9 +36,25 @@ bool Account::save_money(int amount) {
     return true;
 }
 
-bool Account::take_money(int amount)
-{
+bool Account::take_money(int amount) {
+    // reduces *amount* of money from the account if *amount* is positive
+    // and if account has enought in balance or credit.
+    if (amount <= 0)
+        return false;
 
+    if (saldo_ < amount  && !has_credit_) {
+        std::cout << "Cannot take money: balance underflow" << std::endl;
+        return false;
+    }
+    if (has_credit_ && saldo_ + credit_limit_ < amount) {
+        std::cout << "Cannot take money: credit limit overflow" << std::endl;
+        return false;
+    }
+
+    saldo_ -= amount;
+    std:: cout << amount << " euros taken: new balance of "
+               << iban_ << " is " << saldo_ << " euros" << std::endl;
+    return true;
 }
 
 bool Account::transfer_to(Account other, int amount)
