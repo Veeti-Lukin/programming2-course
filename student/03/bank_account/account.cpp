@@ -15,8 +15,10 @@ void Account::print() const {
 bool Account::set_credit_limit(int amount) {
     // sets credit limit to card account if attribute < has_credit > is set to true
     // returns true if succeed, false otherwise
-    if (!has_credit_)
+    if (!has_credit_) {
+        std::cout << "Cannot set credit limit: the account has no credit card" << std::endl;
         return false;
+    }
     if (amount <= 0)
         return false;
 
@@ -24,9 +26,14 @@ bool Account::set_credit_limit(int amount) {
     return true;
 }
 
-bool Account::save_money(int amount)
-{
+bool Account::save_money(int amount) {
+    // adds money to account if parameter *amount* is positivie
 
+    if (amount <= 0)
+        return false;
+
+    saldo_ += amount;
+    return true;
 }
 
 bool Account::take_money(int amount)
