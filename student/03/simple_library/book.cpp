@@ -2,6 +2,8 @@
 #include <string>
 #include <iostream>
 
+const int LOANING_TIME = 28;
+
 Book::Book(std::string author, std::string name):
     author_(author), name_(name), on_loan_(false)
 {
@@ -30,6 +32,8 @@ bool Book::loan(Date today) {
     }
     on_loan_ = true;
     loaning_date_ = today;
+    returning_date_ = today;
+    returning_date_.advance(LOANING_TIME);
     return true;
 }
 

@@ -26,7 +26,7 @@ private:
     std::string name_;
     bool on_loan_;
     Date loaning_date_;
-    Date return_date_;
+    Date returning_date_;
 };
 
 #endif // BOOK_HH
