@@ -15,10 +15,8 @@ void Book::print() const{
     if (on_loan_) {
         std::cout << "- loaned: ";
         loaning_date_.print();
-        std::cout << std::endl;
         std::cout << "- to be returned";
         returning_date_.print();
-        std::cout << std::endl;
     }
     else { // not on loan
         std::cout << "- available" << std::endl;
