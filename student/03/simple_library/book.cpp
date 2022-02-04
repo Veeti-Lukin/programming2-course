@@ -37,9 +37,13 @@ bool Book::loan(Date today) {
     return true;
 }
 
-bool Book::renew()
-{
-
+bool Book::renew() {
+    if (!on_loan_) {
+        std::cout << "Not loaned: cannot be renewed" << std::endl;
+        return false;
+    }
+    loaning_date_.advance(LOANING_TIME);
+    return true;
 }
 
 void Book::give_back()
