@@ -15,7 +15,7 @@ void Book::print() const{
         loaning_date_.print();
         std::cout << std::endl;
         std::cout << "- to be returned";
-        return_date_.print();
+        returning_date_.print();
         std::cout << std::endl;
     }
     else { // not on loan
@@ -23,9 +23,14 @@ void Book::print() const{
     }
 }
 
-bool Book::loan(Date today)
-{
-
+bool Book::loan(Date today) {
+    if (on_loan_) {
+        std::cout << "Already loaned: cannot be loaned" << std::endl;
+        return false;
+    }
+    on_loan_ = true;
+    loaning_date_ = today;
+    return true;
 }
 
 bool Book::renew()

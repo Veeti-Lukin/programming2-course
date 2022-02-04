@@ -9,11 +9,13 @@ class Book {
 public:
     //constructor
     Book(std::string author, std::string name);
+
     //prints information (author : name)
     void print() const;
 
-    //
+    // changes attribute <on_loan> to true and loaning date to *today*
     bool loan(Date today);
+
     //adds another 28 days to the loan. starting from loan date.
     bool renew();
 
