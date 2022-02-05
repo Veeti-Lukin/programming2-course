@@ -19,7 +19,7 @@ public:
     //adds another 28 days to the loan. starting from loan date.
     bool renew();
 
-    void give_back();
+    bool give_back();
 
 private:
     std::string author_;

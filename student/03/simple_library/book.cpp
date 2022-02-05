@@ -44,7 +44,11 @@ bool Book::renew() {
     return true;
 }
 
-void Book::give_back()
-{
-
+bool Book::give_back() {
+    if (!on_loan_) {
+        return false;
+    }
+    on_loan_ = false;
+    return true;
 }
+
