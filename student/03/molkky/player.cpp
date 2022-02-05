@@ -28,9 +28,11 @@ bool Player::add_points(int amount) {
     check_for_penaltypoints();
 }
 
-bool Player::has_won()
-{
-
+bool Player::has_won() {
+    if (points_ == WINNING_POINTS)
+        return true;
+   // else:
+    return false;
 }
 
 
