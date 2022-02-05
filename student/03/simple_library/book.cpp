@@ -40,7 +40,7 @@ bool Book::renew() {
         std::cout << "Not loaned: cannot be renewed" << std::endl;
         return false;
     }
-    loaning_date_.advance(LOANING_TIME);
+    returning_date_.advance(LOANING_TIME);
     return true;
 }
 
