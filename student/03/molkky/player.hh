@@ -23,7 +23,10 @@ public:
 
 private:
     std::string name_;
-    int points_;
+    unsigned int points_;
+
+    //sets player points to 25 if points have gotten above 50
+    void check_for_penaltypoints();
 };
 
 #endif // PLAYER_HH
