@@ -11,9 +11,8 @@ Player::Player(std::string name):
 
 }
 
-string Player::get_name()
-{
-
+string Player::get_name() {
+    return name_;
 }
 
 int Player::get_points()
