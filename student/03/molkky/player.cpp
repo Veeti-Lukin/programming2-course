@@ -15,9 +15,8 @@ string Player::get_name() {
     return name_;
 }
 
-int Player::get_points()
-{
-
+int Player::get_points() {
+    return points_;
 }
 
 bool Player::add_points(int amount)
