@@ -9,11 +9,22 @@ void read_integers(std::vector< int >& ints, int count)
     for(int i = 0; i < count; ++i)
     {
         std::cin >> new_integer;
-        // TODO: Implement your solution here
+        ints.push_back(new_integer);
     }
 }
 
-// TODO: Implement your solution here
+
+bool same_values(const std::vector<int>& ints){
+    if(ints.size()==0)
+        return false;
+
+    int first_value = ints.at(0);
+    for(auto i : ints) {
+        if(i != first_value)
+            return false;
+    }
+    return true;
+}
 
 
 int main()
