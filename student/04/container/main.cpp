@@ -31,8 +31,21 @@ bool is_ordered_non_strict_ascending(const std::vector<int>& ints){
         return false;
 
     int previous = ints.at(0);
-    for(std::vector<int>::size_type i = 1; i < ints.size(); i++) {
+    for(std::vector<int>::size_type i = 1; i < ints.size(); i++){
         if(ints.at(i) < previous) {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool is_arithmetic_series(const std::vector<int>& ints){
+    if(ints.size()<3)
+        return false;
+
+    int st_difference = ints.at(1) - ints.at(0);
+    for(std::vector<int>::size_type i = 2; i < ints.size(); i++){
+        if(ints.at(i) - ints.at(i-1) != st_difference) {
             return false;
         }
     }
