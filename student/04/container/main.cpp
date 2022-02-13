@@ -52,6 +52,21 @@ bool is_arithmetic_series(const std::vector<int>& ints){
     return true;
 }
 
+bool is_geometric_series(const std::vector<int>& ints){
+    if(ints.size()<3)
+        return false;
+
+    int st_ratio = ints.at(1) / ints.at(0);
+    for(std::vector<int>::size_type i = 2; i < ints.size(); i++){
+        if(ints.at(i-1) == 0)
+            return false;
+        if(ints.at(i) / ints.at(i-1) != st_ratio) {
+            return false;
+        }
+    }
+    return true;
+}
+
 int main()
 {
     std::cout << "How many integers are there? ";
