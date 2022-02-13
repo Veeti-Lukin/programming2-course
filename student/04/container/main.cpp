@@ -26,6 +26,18 @@ bool same_values(const std::vector<int>& ints){
     return true;
 }
 
+bool is_ordered_non_strict_ascending(const std::vector<int>& ints){
+    if(ints.size()<2)
+        return false;
+
+    int previous = ints.at(0);
+    for(std::vector<int>::size_type i = 1; i < ints.size(); i++) {
+        if(ints.at(i) < previous) {
+            return false;
+        }
+    }
+    return true;
+}
 
 int main()
 {
