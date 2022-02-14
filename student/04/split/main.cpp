@@ -5,28 +5,21 @@
 
 // TODO: Implement split function here
 // Do not change main function
-std::vector<std::string> split(const std::string& text, char splitter, bool skip_empty=false) {
+std::vector<std::string> split(std::string text, char splitter, bool skip_empty=false) {
     std::vector<std::string> words;
+    std::string substr = "";
+    size_t start = 0;
+    size_t end = text.find(splitter);
+    while (end != std::string::npos) {
+        substr = text.substr(start, end - start);
+        start = end +1;
+        end = text.find(splitter, start);
 
-    if (text.find(splitter) == std::string::npos) {
-        words.push_back(text);
-        return words;
-    }
-    std::string current_word = "";
-    for (std::string::size_type i = 0; i < text.size(); i++) {
-        if (text.at(i) == splitter) {
-            if (current_word == "" && skip_empty)
-                continue;
-            words.push_back(current_word);
-            current_word = "";
+        if (skip_empty && substr ==  "")
             continue;
-        }
-        current_word += text.at(i);
-        if (i == text.size()-1) {
-            words.push_back(current_word);
-        }
-    }
 
+        words.push_back(substr);
+    }
     return words;
 }
 
