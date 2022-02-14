@@ -20,6 +20,7 @@ std::vector<std::string> split(std::string text, char splitter, bool skip_empty=
 
         words.push_back(substr);
     }
+    words.push_back(text.substr(start, end - start));
     return words;
 }
 
