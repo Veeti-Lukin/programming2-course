@@ -5,7 +5,30 @@
 
 // TODO: Implement split function here
 // Do not change main function
+std::vector<std::string> split(const std::string& text, char splitter, bool skip_empty=false) {
+    std::vector<std::string> words;
 
+    if (text.find(splitter) == std::string::npos) {
+        words.push_back(text);
+        return words;
+    }
+    std::string current_word = "";
+    for (std::string::size_type i = 0; i < text.size(); i++) {
+        if (text.at(i) == splitter) {
+            if (current_word == "" && skip_empty)
+                continue;
+            words.push_back(current_word);
+            current_word = "";
+            continue;
+        }
+        current_word += text.at(i);
+        if (i == text.size()-1) {
+            words.push_back(current_word);
+        }
+    }
+
+    return words;
+}
 
 int main()
 {
