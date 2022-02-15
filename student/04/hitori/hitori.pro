@@ -4,4 +4,8 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
+        gameboard.cpp \
         main.cpp
+
+HEADERS += \
+    gameboard.hh
