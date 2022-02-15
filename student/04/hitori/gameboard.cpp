@@ -39,6 +39,25 @@ void Gameboard::print(){
     cout << "=================" << endl;
 }
 
+void Gameboard::removeSquare(unsigned int column,unsigned int row){
+    // given coordinates should be 1 more than actual indexes int <squares_> matrix
+    // this is because <print> method starts printin coordinates from 1
+    row -= 1;
+    column -= 1;
+
+    if ((!(row < BOARD_SIDE) || !(column < BOARD_SIDE))
+            || (row < 0 || column < 0)){
+        cout << "Out of board" << endl;
+        return;
+    }
+
+    if (squares_.at(row).at(column) == 0){
+        cout << "Already removed" << endl;
+        return;
+    }
+    squares_.at(row).at(column) = 0;
+}
+
 
 void Gameboard::parseVectorToMatrix(const vector<unsigned int> values){
     //check header file for refrence picture of the <squares_> matrix

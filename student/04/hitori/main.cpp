@@ -46,6 +46,7 @@ using std::cin;
 
 const char RANDOMM_CHAR = 'R';
 const char INPUT_CHAR = 'I';
+const string QUIT_CHAR = "Q";
 
 // Asks user to input Gamebase areas amount of number values
 // returns tehem as a vector
@@ -87,26 +88,38 @@ Gameboard createGameboard() {
 unsigned int stoi_with_check(const string& str)
 {
     bool is_numeric = true;
-    for(unsigned int i = 0; i < str.length(); ++i)
-    {
-        if(not isdigit(str.at(i)))
-        {
+    for(unsigned int i = 0; i < str.length(); ++i){
+        if(not isdigit(str.at(i))){
             is_numeric = false;
             break;
         }
     }
-    if(is_numeric)
-    {
+    if(is_numeric){
         return stoi(str);
     }
-    else
-    {
+    else{
         return 0;
     }
 }
 
 
+
 int main(){
     Gameboard gameboard = createGameboard();
-    gameboard.print();
+    while (true) {
+        gameboard.print();
+
+        cout << "Enter removable element (x, y): ";
+        string x = "";
+        string y = "";
+        cin >> x;
+        cin >> y;
+
+        if (x == QUIT_CHAR || y == QUIT_CHAR){
+            return 0;
+        }
+
+        gameboard.removeSquare(stoi_with_check(x), stoi_with_check(y));
+
+    }
 }

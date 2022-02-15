@@ -23,6 +23,8 @@ public:
     // prints the gameboard with row and column numbers to console
     void print();
 
+    // removes one value from <squares_> matrix by chaging its value to 0
+    void removeSquare(unsigned int x,unsigned int y);
 private:
     /* A nested vector matrix that holds information about every square and its integer value
      * vectors size will be =BOARD_SIDE  and subvectores sizes will be =BOARD_SIDE
