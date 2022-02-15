@@ -20,6 +20,8 @@ public:
     // Constructor with given square integer values.
     Gameboard(const std::vector<unsigned int>& givenValues);
 
+    // prints the gameboard with row and column numbers to console
+    void print();
 
 private:
     /* A nested vector matrix that holds information about every square and its integer value

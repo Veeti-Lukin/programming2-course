@@ -17,6 +17,28 @@ Gameboard::Gameboard(const vector<unsigned int>& givenValues){
     parseVectorToMatrix(givenValues);
 }
 
+void Gameboard::print(){
+    cout << "=================" << endl;
+    cout << "|   | 1 2 3 4 5 |" << endl;
+    cout << "-----------------" << endl;
+    for(unsigned int row = 0; row < BOARD_SIDE; ++row){
+        cout << "| " << row + 1 << " | ";
+        for(unsigned int column = 0; column < BOARD_SIDE; ++column)
+        {
+            if(squares_.at(row).at(column) == 0)
+            {
+                cout << EMPTY << " ";
+            }
+            else
+            {
+                cout << squares_.at(row).at(column) << " ";
+            }
+        }
+        cout << "|" << endl;
+    }
+    cout << "=================" << endl;
+}
+
 
 void Gameboard::parseVectorToMatrix(const vector<unsigned int> values){
     //check header file for refrence picture of the <squares_> matrix
@@ -25,7 +47,7 @@ void Gameboard::parseVectorToMatrix(const vector<unsigned int> values){
     for (vector<unsigned int>::size_type index = 0; index < values.size(); index++) {
         subVector.push_back(values.at(index));
         // checking if should go to next "row"
-        if (index % BOARD_SIDE == 0 && index != 0) {
+        if ((index+1) % BOARD_SIDE == 0 && index != 0) {
             squares_.push_back(subVector);
         }
     }
