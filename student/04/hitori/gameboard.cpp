@@ -44,11 +44,13 @@ void Gameboard::parseVectorToMatrix(const vector<unsigned int> values){
     //check header file for refrence picture of the <squares_> matrix
     //loops over the values in *values* and forms subvectors of size BOARD_SIZE
     vector<unsigned int> subVector = {};
+
     for (vector<unsigned int>::size_type index = 0; index < values.size(); index++) {
         subVector.push_back(values.at(index));
         // checking if should go to next "row"
-        if ((index+1) % BOARD_SIDE == 0 && index != 0) {
+        if ((index+1) % BOARD_SIDE == 0) {
             squares_.push_back(subVector);
+            subVector.clear();
         }
     }
 }

@@ -33,7 +33,7 @@
  * Notes about the program and it's implementation:
  *
  * */
-
+#include "gameboard.hh"
 #include <iostream>
 #include <vector>
 #include <string>
@@ -42,6 +42,44 @@ using std::endl;
 using std::cout;
 using std::vector;
 using std::string;
+using std::cin;
+
+const char RANDOMM_CHAR = 'R';
+const char INPUT_CHAR = 'I';
+
+// Asks user to input Gamebase areas amount of number values
+// returns tehem as a vector
+vector<unsigned int> inputSquareValues() {
+    cout << "Input: ";
+    // asking integer values for whole gameboard area
+    unsigned int area = BOARD_SIDE * BOARD_SIDE;
+    vector<unsigned int> inputtedValues = {};
+
+    for (unsigned int i = 0; i < area; i++) {
+        unsigned int squareValue = 0;
+        cin >> squareValue;
+        inputtedValues.push_back(squareValue);
+    }
+    return inputtedValues;
+}
+
+// Creates instance of Gameboard class
+// Asks user input if user wants to fill squares or let them be randomized
+Gameboard createGameboard() {
+    while (true) {
+        cout << "Select start ("<< RANDOMM_CHAR << " for random, "
+             << INPUT_CHAR << " for input): ";
+        char fillMode = ' ';
+        cin >> fillMode;
+
+        switch (toupper(fillMode)) {
+            case RANDOMM_CHAR:
+                return Gameboard();
+             case INPUT_CHAR:
+                return Gameboard(inputSquareValues());
+        }
+    }
+}
 
 // Converts the given numeric string to the corresponding integer
 // (by calling stoi).
@@ -68,7 +106,7 @@ unsigned int stoi_with_check(const string& str)
 }
 
 
-int main()
-{
-    return 0;
+int main(){
+    Gameboard gameboard = createGameboard();
+    gameboard.print();
 }
