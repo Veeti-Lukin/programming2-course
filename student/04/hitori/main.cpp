@@ -24,7 +24,7 @@
  * a number cannot be removed again.
  *   When the game ends, the program tells if the player won or lost.
  *
- * Program author
+ * Program author ( Fill with your own info )
  * Name: Veeti Lukin
  * Student number: 50797635
  * UserID: gtvelu
@@ -42,7 +42,6 @@ using std::endl;
 using std::cout;
 using std::vector;
 using std::string;
-
 
 // Converts the given numeric string to the corresponding integer
 // (by calling stoi).
@@ -68,31 +67,6 @@ unsigned int stoi_with_check(const string& str)
     }
 }
 
-
-// Prints the game board with row and column numbers.
-void print(const /*vector of vectors or a compatible type*/& gameboard)
-{
-    cout << "=================" << endl;
-    cout << "|   | 1 2 3 4 5 |" << endl;
-    cout << "-----------------" << endl;
-    for(unsigned int i = 0; i < BOARD_SIDE; ++i)
-    {
-        cout << "| " << i + 1 << " | ";
-        for(unsigned int j = 0; j < BOARD_SIDE; ++j)
-        {
-            if(gameboard.at(i).at(j) == 0)
-            {
-                cout << EMPTY << " ";
-            }
-            else
-            {
-                cout << gameboard.at(i).at(j) << " ";
-            }
-        }
-        cout << "|" << endl;
-    }
-    cout << "=================" << endl;
-}
 
 int main()
 {
