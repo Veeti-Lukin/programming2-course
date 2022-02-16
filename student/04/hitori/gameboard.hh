@@ -25,6 +25,10 @@ public:
 
     // removes one value from <squares_> matrix by chaging its value to 0
     void removeSquare(unsigned int x,unsigned int y);
+
+    // cheks if the game is won.
+    // Game is won if there are no dublicate values on row or coulmn.
+    bool isWon();
 private:
     /* A nested vector matrix that holds information about every square and its integer value
      * vectors size will be =BOARD_SIDE  and subvectores sizes will be =BOARD_SIDE

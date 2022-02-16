@@ -116,10 +116,14 @@ int main(){
         cin >> y;
 
         if (x == QUIT_CHAR || y == QUIT_CHAR){
-            return 0;
+            return EXIT_SUCCESS;
         }
 
         gameboard.removeSquare(stoi_with_check(x), stoi_with_check(y));
 
+        if(gameboard.isWon()){
+            cout << "You won" << endl;
+            return EXIT_SUCCESS;
+        }
     }
 }

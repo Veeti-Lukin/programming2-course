@@ -1,5 +1,6 @@
 #include "gameboard.hh"
 #include <random>
+#include <algorithm>
 
 using std::endl;
 using std::cout;
@@ -56,6 +57,40 @@ void Gameboard::removeSquare(unsigned int column,unsigned int row){
         return;
     }
     squares_.at(row).at(column) = 0;
+}
+
+bool Gameboard::isWon(){
+    // looping trough matrix value by value
+    for(unsigned int row = 0; row < BOARD_SIDE; ++row){
+        for(unsigned int column = 0; column < BOARD_SIDE; ++column){
+            unsigned int value = squares_.at(row).at(column);
+            // there is no need to count values that are 0
+            if (value == 0) {
+                continue;
+            }
+            // count needs to be set  as -1,
+            // because value will be atleast once on row and colu
+            int valueCount = -1;
+            // looping trough current row and current column
+            for(unsigned int iterator = 0; iterator < BOARD_SIDE; ++iterator) {
+                // check row
+                if (squares_.at(row).at(iterator) == value) {
+                    valueCount += 1;
+                }
+                // check column
+                if (squares_.at(iterator).at(column) == value) {
+                    valueCount += 1;
+                }
+            }
+
+            // reuturn false if multiple values on same row or column
+            if (valueCount > 1){
+                return false;
+            }
+        }
+    }
+    // no dublicate values on rows or coulmn found
+    return true;
 }
 
 
