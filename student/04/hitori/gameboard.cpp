@@ -1,3 +1,15 @@
+/*
+* Program author
+* Name: Veeti Lukin
+* Student number: 50797635
+* UserID: gtvelu
+* E-Mail: veeti.lukin@tuni.fi
+*
+* Notes about the program and it's implementation:
+*   This is only class implemention.
+*   Check header file for more infomation.
+*/
+
 #include "gameboard.hh"
 #include <random>
 #include <algorithm>
@@ -44,7 +56,7 @@ bool Gameboard::removeSquare(unsigned int column,unsigned int row){
     row -= 1;
     column -= 1;
     // no need to check if coordinate is <0
-    // because unsigned int will flip 4 byte maxium if it goes under 0
+    // because unsigned int will flip to 4 byte maxium if it goes under 0
     if (!(row < BOARD_SIDE) || !(column < BOARD_SIDE)){
         cout << "Out of board" << endl;
         return false;
@@ -159,6 +171,7 @@ void Gameboard::parseVectorToMatrix(const vector<unsigned int> values){
 }
 
 vector<unsigned int> Gameboard::generateRandomValues() const{
+    // getting seed value from user
     cout << "Enter a seed value: ";
     string seedString = "";
     getline(cin, seedString);

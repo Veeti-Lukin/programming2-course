@@ -1,6 +1,22 @@
 #ifndef GAMEBOARD_HH
 #define GAMEBOARD_HH
-
+/*
+* Program author
+* Name: Veeti Lukin
+* Student number: 50797635
+* UserID: gtvelu
+* E-Mail: veeti.lukin@tuni.fi
+*
+* Notes about the class and it's implementation:
+*   Models a gameboard in a game named Hitori. This is only a header file.
+*   (check main.cpp for more informative explanation of the game itself)
+*
+*   Public interface offers method to check games states, printout the board
+*   and ability to remove squares friom it.
+*
+*   Inofrmation of game squares is saved in 2d vector matrix
+*   Instance of Gameboard can be constructed with random or given square values.
+*/
 #include <iostream>
 #include <vector>
 

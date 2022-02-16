@@ -24,14 +24,16 @@
  * a number cannot be removed again.
  *   When the game ends, the program tells if the player won or lost.
  *
- * Program author ( Fill with your own info )
+ * Program author
  * Name: Veeti Lukin
  * Student number: 50797635
  * UserID: gtvelu
  * E-Mail: veeti.lukin@tuni.fi
  *
  * Notes about the program and it's implementation:
- *
+ *  Gameboard is impelementd in class that contains matrix of gameboards values
+ *  Main will handle all (or atleast almost all) interaction with user
+ *  All changes to gameboards state will be done from Gamboard instances public interface
  * */
 #include "gameboard.hh"
 #include <iostream>
