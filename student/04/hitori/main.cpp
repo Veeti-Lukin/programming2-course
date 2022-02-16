@@ -106,9 +106,9 @@ unsigned int stoi_with_check(const string& str)
 
 int main(){
     Gameboard gameboard = createGameboard();
-    while (true) {
-        gameboard.print();
+    gameboard.print();
 
+    while (true) {
         cout << "Enter removable element (x, y): ";
         string x = "";
         string y = "";
@@ -131,5 +131,6 @@ int main(){
             return EXIT_SUCCESS;
 
         }
+        gameboard.print();
     }
 }

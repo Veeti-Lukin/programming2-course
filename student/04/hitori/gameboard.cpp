@@ -24,14 +24,11 @@ void Gameboard::print(){
     cout << "-----------------" << endl;
     for(unsigned int row = 0; row < BOARD_SIDE; ++row){
         cout << "| " << row + 1 << " | ";
-        for(unsigned int column = 0; column < BOARD_SIDE; ++column)
-        {
-            if(squares_.at(row).at(column) == 0)
-            {
+        for(unsigned int column = 0; column < BOARD_SIDE; ++column){
+            if(squares_.at(row).at(column) == 0){
                 cout << EMPTY << " ";
             }
-            else
-            {
+            else{
                 cout << squares_.at(row).at(column) << " ";
             }
         }
@@ -45,9 +42,9 @@ void Gameboard::removeSquare(unsigned int column,unsigned int row){
     // this is because <print> method starts printin coordinates from 1
     row -= 1;
     column -= 1;
-
-    if ((!(row < BOARD_SIDE) || !(column < BOARD_SIDE))
-            || (row < 0 || column < 0)){
+    // no need to check if coordinate is <0
+    // because unsigned int will flip 4 byte maxium if it goes under 0
+    if (!(row < BOARD_SIDE) || !(column < BOARD_SIDE)){
         cout << "Out of board" << endl;
         return;
     }
