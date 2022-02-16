@@ -47,6 +47,7 @@ using std::cin;
 const char RANDOMM_CHAR = 'R';
 const char INPUT_CHAR = 'I';
 const string QUIT_CHAR = "Q";
+const string QUIT_CHAR_LOWER = "q";
 
 // Asks user to input Gamebase areas amount of number values
 // returns tehem as a vector
@@ -113,7 +114,7 @@ int main(){
         string x = "";
         string y = "";
         cin >> x;
-        if (x == QUIT_CHAR ){
+        if (x == QUIT_CHAR || x == QUIT_CHAR_LOWER){
             cout << "Quitting" << endl;
             return EXIT_SUCCESS;
         }
