@@ -7,6 +7,7 @@ using std::cout;
 using std::cin;
 using std::vector;
 using std::string;
+using std::getline;
 
 Gameboard::Gameboard(){
     // initializes random values to squares in <squares_>
@@ -158,9 +159,10 @@ void Gameboard::parseVectorToMatrix(const vector<unsigned int> values){
 }
 
 vector<unsigned int> Gameboard::generateRandomValues() const{
-    int seed;
     cout << "Enter a seed value: ";
-    cin >> seed;
+    string seedString = "";
+    getline(cin, seedString);
+    int seed = stoi(seedString);
 
     // initializing random number generator
     std::default_random_engine generator(seed);

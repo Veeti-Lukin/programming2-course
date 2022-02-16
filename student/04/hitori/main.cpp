@@ -43,44 +43,18 @@ using std::cout;
 using std::vector;
 using std::string;
 using std::cin;
+using std::getline;
 
-const char RANDOMM_CHAR = 'R';
-const char INPUT_CHAR = 'I';
+const string RANDOMM_CHAR = "R";
+const string INPUT_CHAR = "I";
 const string QUIT_CHAR = "Q";
-const string QUIT_CHAR_LOWER = "q";
 
-// Asks user to input Gamebase areas amount of number values
-// returns tehem as a vector
-vector<unsigned int> inputSquareValues() {
-    cout << "Input: ";
-    // asking integer values for whole gameboard area
-    unsigned int area = BOARD_SIDE * BOARD_SIDE;
-    vector<unsigned int> inputtedValues = {};
-
-    for (unsigned int i = 0; i < area; i++) {
-        unsigned int squareValue = 0;
-        cin >> squareValue;
-        inputtedValues.push_back(squareValue);
+// converts given string to uppercase and returns it
+string stringToUpper(string str){
+    for (string::size_type i = 0; i < str.size(); i++) {
+        str.at(i) = toupper(str.at(i));
     }
-    return inputtedValues;
-}
-
-// Creates instance of Gameboard class
-// Asks user input if user wants to fill squares or let them be randomized
-Gameboard createGameboard() {
-    while (true) {
-        cout << "Select start ("<< RANDOMM_CHAR << " for random, "
-             << INPUT_CHAR << " for input): ";
-        char fillMode = ' ';
-        cin >> fillMode;
-
-        switch (toupper(fillMode)) {
-            case RANDOMM_CHAR:
-                return Gameboard();
-             case INPUT_CHAR:
-                return Gameboard(inputSquareValues());
-        }
-    }
+    return str;
 }
 
 // Converts the given numeric string to the corresponding integer
@@ -103,6 +77,52 @@ unsigned int stoi_with_check(const string& str)
     }
 }
 
+// splits given string of ints *str* from every char *splitter*
+// converts every string form int to int with <stoi_with_check> function
+// returns vector of those ints
+vector<unsigned int> splitStringToInts(string& str, char splitter, bool skip_empty=true) {
+    vector<unsigned int> ints;
+    string substr = "";
+    size_t start = 0;
+    size_t end = str.find(splitter);
+    while (end != string::npos) {
+        substr = str.substr(start, end - start);
+        start = end +1;
+        end = str.find(splitter, start);
+
+        if (skip_empty && substr ==  "")
+            continue;
+        int substrAsInt = stoi_with_check(substr);
+        ints.push_back(substrAsInt);
+    }
+    int substrAsInt = stoi_with_check(str.substr(start, end - start));
+    ints.push_back(substrAsInt);
+    return ints;
+}
+
+
+// Creates instance of Gameboard class
+// Asks user input if user wants to fill squares or let them be randomized
+Gameboard createGameboard() {
+    while (true) {
+        cout << "Select start ("<< RANDOMM_CHAR << " for random, "
+             << INPUT_CHAR << " for input): ";
+        string fillMode = "";
+        getline(cin, fillMode);
+
+
+        if (stringToUpper(fillMode) == RANDOMM_CHAR){
+            return Gameboard();
+        }
+        if (stringToUpper(fillMode) == INPUT_CHAR){
+            cout << "Input: ";
+            string inputtedValues = "";
+            getline(cin, inputtedValues);
+            vector<unsigned int> inputtedValuesAsInts = splitStringToInts(inputtedValues, ' ');
+            return Gameboard(inputtedValuesAsInts);
+        }
+    }
+}
 
 
 int main(){
@@ -111,16 +131,23 @@ int main(){
 
     while (true) {
         cout << "Enter removable element (x, y): ";
-        string x = "";
-        string y = "";
-        cin >> x;
-        if (x == QUIT_CHAR || x == QUIT_CHAR_LOWER){
+        string answer = "";
+        getline(cin, answer);
+
+        if (stringToUpper(answer) == QUIT_CHAR){
             cout << "Quitting" << endl;
             return EXIT_SUCCESS;
         }
-        cin >> y;
+        vector<unsigned int> coordinates = splitStringToInts(answer, ' ');
 
-        if (!(gameboard.removeSquare(stoi_with_check(x), stoi_with_check(y)))){
+        if (coordinates.size() != 2){
+            cout << "Enter X and Y coordinates" << endl;
+            continue;
+        }
+        int x = coordinates.at(0);
+        int y = coordinates.at(1);
+
+        if (!(gameboard.removeSquare(x, y))){
             continue;
         }
         gameboard.print();
