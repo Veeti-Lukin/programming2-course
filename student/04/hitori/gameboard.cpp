@@ -94,34 +94,52 @@ bool Gameboard::isWon(){
 }
 
 bool Gameboard::isLost(){
+    // loop trough <squares_> matrix value by value
+    // and calculating how many nonzero and zero neighbours it has.
+    // If value != 0 it should have atleas one nonzero neigbour or it is isolated
+    // if value == 0 it should not have any zero neighbours
     for (unsigned int row = 0; row < BOARD_SIDE; ++row){
         for ( unsigned int column = 0; column < BOARD_SIDE; ++column){
             int neighbourNonZeroCount = 0;
-
+            int neighbourZeroCount = 0;
             if (row != 0){
                 if (squares_.at(row-1).at(column) != 0){
                     neighbourNonZeroCount += 1;
+                }
+                else {
+                    neighbourZeroCount += 1;
                 }
             }
             if (column != 0){
                 if (squares_.at(row).at(column-1) != 0){
                     neighbourNonZeroCount += 1;
                 }
+                else {
+                    neighbourZeroCount += 1;
+                }
             }
             if (row != BOARD_SIDE -1){
                 if (squares_.at(row +1).at(column) != 0){
                     neighbourNonZeroCount += 1;
+                }
+                else {
+                    neighbourZeroCount += 1;
                 }
             }
             if (column != BOARD_SIDE -1){
                 if (squares_.at(row).at(column+1) != 0){
                     neighbourNonZeroCount += 1;
                 }
+                else {
+                    neighbourZeroCount += 1;
+                }
             }
             if (neighbourNonZeroCount == 0){
                 return true;
             }
-
+            if (squares_.at(row).at(column) == 0 && neighbourZeroCount > 0){
+                return true;
+            }
         }
     }
     return false;

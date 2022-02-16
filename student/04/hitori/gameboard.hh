@@ -30,9 +30,9 @@ public:
     // Game is won if there are no dublicate values on row or coulmn.
     bool isWon();
 
-    //checks if the game is lost.
+    // checks if the game is lost.
     // Game is lost if any adjacent square to already removed suqare gets removed
-    // or if all neighbour squares of any square get removed.
+    // or if all neighbour squares of any square get removed and it becames isolated.
     bool isLost();
 private:
     /* A nested vector matrix that holds information about every square and its integer value

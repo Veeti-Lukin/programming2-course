@@ -127,7 +127,9 @@ int main(){
         }
         if (gameboard.isLost()){
             cout << "You lost" << endl;
+                        gameboard.print();
             return EXIT_SUCCESS;
+
         }
     }
 }
