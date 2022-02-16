@@ -24,7 +24,8 @@ public:
     void print();
 
     // removes one value from <squares_> matrix by chaging its value to 0
-    void removeSquare(unsigned int x,unsigned int y);
+    // returns true if succeeded, false otherwise
+    bool removeSquare(unsigned int x,unsigned int y);
 
     // cheks if the game is won.
     // Game is won if there are no dublicate values on row or coulmn.

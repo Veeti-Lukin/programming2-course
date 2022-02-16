@@ -37,7 +37,7 @@ void Gameboard::print(){
     cout << "=================" << endl;
 }
 
-void Gameboard::removeSquare(unsigned int column,unsigned int row){
+bool Gameboard::removeSquare(unsigned int column,unsigned int row){
     // given coordinates should be 1 more than actual indexes int <squares_> matrix
     // this is because <print> method starts printin coordinates from 1
     row -= 1;
@@ -46,14 +46,14 @@ void Gameboard::removeSquare(unsigned int column,unsigned int row){
     // because unsigned int will flip 4 byte maxium if it goes under 0
     if (!(row < BOARD_SIDE) || !(column < BOARD_SIDE)){
         cout << "Out of board" << endl;
-        return;
+        return false;
     }
-
     if (squares_.at(row).at(column) == 0){
         cout << "Already removed" << endl;
-        return;
+        return false;
     }
     squares_.at(row).at(column) = 0;
+    return true;
 }
 
 bool Gameboard::isWon(){

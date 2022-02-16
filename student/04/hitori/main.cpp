@@ -113,13 +113,16 @@ int main(){
         string x = "";
         string y = "";
         cin >> x;
-        cin >> y;
-
-        if (x == QUIT_CHAR || y == QUIT_CHAR){
+        if (x == QUIT_CHAR ){
+            cout << "Quitting" << endl;
             return EXIT_SUCCESS;
         }
+        cin >> y;
 
-        gameboard.removeSquare(stoi_with_check(x), stoi_with_check(y));
+        if (!(gameboard.removeSquare(stoi_with_check(x), stoi_with_check(y)))){
+            continue;
+        }
+        gameboard.print();
 
         if(gameboard.isWon()){
             cout << "You won" << endl;;
@@ -127,10 +130,8 @@ int main(){
         }
         if (gameboard.isLost()){
             cout << "You lost" << endl;
-                        gameboard.print();
             return EXIT_SUCCESS;
 
         }
-        gameboard.print();
     }
 }
