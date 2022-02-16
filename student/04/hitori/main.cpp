@@ -122,7 +122,11 @@ int main(){
         gameboard.removeSquare(stoi_with_check(x), stoi_with_check(y));
 
         if(gameboard.isWon()){
-            cout << "You won" << endl;
+            cout << "You won" << endl;;
+            return EXIT_SUCCESS;
+        }
+        if (gameboard.isLost()){
+            cout << "You lost" << endl;
             return EXIT_SUCCESS;
         }
     }

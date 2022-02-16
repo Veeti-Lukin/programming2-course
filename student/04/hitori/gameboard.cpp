@@ -93,6 +93,39 @@ bool Gameboard::isWon(){
     return true;
 }
 
+bool Gameboard::isLost(){
+    for (unsigned int row = 0; row < BOARD_SIDE; ++row){
+        for ( unsigned int column = 0; column < BOARD_SIDE; ++column){
+            int neighbourNonZeroCount = 0;
+
+            if (row != 0){
+                if (squares_.at(row-1).at(column) != 0){
+                    neighbourNonZeroCount += 1;
+                }
+            }
+            if (column != 0){
+                if (squares_.at(row).at(column-1) != 0){
+                    neighbourNonZeroCount += 1;
+                }
+            }
+            if (row != BOARD_SIDE -1){
+                if (squares_.at(row +1).at(column) != 0){
+                    neighbourNonZeroCount += 1;
+                }
+            }
+            if (column != BOARD_SIDE -1){
+                if (squares_.at(row).at(column+1) != 0){
+                    neighbourNonZeroCount += 1;
+                }
+            }
+            if (neighbourNonZeroCount == 0){
+                return true;
+            }
+
+        }
+    }
+    return false;
+}
 
 void Gameboard::parseVectorToMatrix(const vector<unsigned int> values){
     //check header file for refrence picture of the <squares_> matrix
