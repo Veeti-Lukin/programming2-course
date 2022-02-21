@@ -44,7 +44,7 @@ int main(){
     ofstream outputFileObject(outputFileName);
 
     if (! inputfileObject) {
-        cout << "ERROR! The file " << inputFileName << " cannot be opened." << endl;
+        cout << "Error! The file " << inputFileName << " cannot be opened." << endl;
         return EXIT_FAILURE;
     }
 
