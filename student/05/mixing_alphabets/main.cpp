@@ -19,8 +19,8 @@ int main()
             return EXIT_SUCCESS;
         }
 
-        // TODO: implement your solution here
-	
+        shuffle(word.begin()+1,word.end()-1, generator);
+
         std::cout << word << std::endl;
     }
 }
