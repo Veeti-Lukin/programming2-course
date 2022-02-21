@@ -18,8 +18,9 @@ int main()
         {
             return EXIT_SUCCESS;
         }
-
-        shuffle(word.begin()+1,word.end()-1, generator);
+        if (word.size() > 1) {
+            shuffle(word.begin()+1,word.end()-1, generator);
+        }
 
         std::cout << word << std::endl;
     }
