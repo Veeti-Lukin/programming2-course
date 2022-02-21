@@ -36,17 +36,18 @@ int main(){
     cout << "Input file: ";
     string inputFileName = "";
     getline(cin, inputFileName);
+    ifstream inputfileObject(inputFileName);
     cout << "Output file: ";
     string outputFileName = "";
     getline(cin, outputFileName);
 
-    ifstream inputfileObject(inputFileName);
-    ofstream outputFileObject(outputFileName);
-
+    // checking if inputfile exists before making outputfile object
     if (! inputfileObject) {
         cout << "Error! The file " << inputFileName << " cannot be opened." << endl;
         return EXIT_FAILURE;
     }
+    ofstream outputFileObject(outputFileName);
+
 
     vector<string> strings = readLines(inputfileObject);
 
