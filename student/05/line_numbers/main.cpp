@@ -4,7 +4,7 @@
 #include <vector>
 
 using  std::cout, std::cin, std::string, std::ifstream, std::endl, std::vector,
-        std::ofstream, std::getline;
+        std::ofstream, std::getline, std::to_string;
 
 vector<string> readLines(ifstream& fileObject){
     vector<string> lines = {};
@@ -21,22 +21,41 @@ vector<string> readLines(ifstream& fileObject){
     }
     // no error while reading the file
     return lines;
+    fileObject.close();
 }
+
+void writeLines(ofstream& fileObject, const vector<string>& lines ){
+    for (const string& line : lines){
+        fileObject << line << endl;
+    }
+    fileObject.close();
+}
+
 
 int main(){
     cout << "Input file: ";
-    string fileName = "";
-    getline(cin, fileName);
-    ifstream fileObject(fileName);
+    string inputFileName = "";
+    getline(cin, inputFileName);
+    cout << "Output file: ";
+    string outputFileName = "";
+    getline(cin, outputFileName);
 
-    if (! fileObject) {
-        cout << "ERROR! The file " << fileName << " cannot be opened." << endl;
+    ifstream inputfileObject(inputFileName);
+    ofstream outputFileObject(outputFileName);
+
+    if (! inputfileObject) {
+        cout << "ERROR! The file " << inputFileName << " cannot be opened." << endl;
         return EXIT_FAILURE;
     }
 
-    vector<string> strings = readLines(fileObject);
-    for (string & s : strings){
-        cout << s << endl;
+    vector<string> strings = readLines(inputfileObject);
+
+    // adding row numbers
+    for (vector<string>::size_type i = 0; i < strings.size(); i++){
+        strings.at(i) = to_string(i + 1) + " " + strings.at(i);
     }
+
+    writeLines(outputFileObject, strings);
+
     return EXIT_SUCCESS;
 }
