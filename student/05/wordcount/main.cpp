@@ -79,7 +79,7 @@ int main()  {
         cout << p.first << " "<< p.second.size() <<": ";
         for (const int& lineNum : p.second) {
             cout << lineNum;
-            if (p.second.find(lineNum) != p.second.end()) {
+            if (p.second.find(lineNum) != (--p.second.end())) {
                 cout << ", ";
             }
         }
