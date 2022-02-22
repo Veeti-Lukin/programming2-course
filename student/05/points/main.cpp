@@ -2,8 +2,12 @@
 #include <vector>
 #include <map>
 #include <fstream>
+#include <algorithm>
+#include <utility>
 
 using namespace std;
+
+const string DELIMETER = ":";
 
 vector<string> readLinesFromFile(string fileName) {
     ifstream fileObject(fileName);
@@ -30,7 +34,6 @@ vector<string> readLinesFromFile(string fileName) {
     return lines;
 }
 
-
 int main()  {
     cout << "Input file: ";
     string inputFileName = "";
@@ -41,4 +44,24 @@ int main()  {
         return EXIT_FAILURE;
     }
 
+    map<string, int> points;
+    for (const string& line : lines) {
+        size_t splittingPoint = line.find(DELIMETER);
+        if (splittingPoint == string::npos) {
+            return EXIT_FAILURE;
+        }
+
+        string name = line.substr(0, splittingPoint);
+        int score = stoi(line.substr(splittingPoint+1, line.size()));
+
+        if (points.find(name) == points.end()) {
+            points.insert({name, 0});
+        }
+        points.at(name) += score;
+    }
+
+    cout << "Final scores:" << endl;
+    for(auto& p : points) {
+        cout << p.first << ": " << p.second << endl;
+    }
 }
