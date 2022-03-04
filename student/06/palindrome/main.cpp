@@ -4,14 +4,23 @@
 #define RECURSIVE_FUNC
 #endif
 
-bool palindrome_recursive(std::string s)
-{
+bool palindrome_recursive(std::string s) {
   RECURSIVE_FUNC
-  // Do not remove RECURSIVE_FUNC declaration, it's necessary for automatic testing to work
-  // ------------
+    // Do not remove RECURSIVE_FUNC declaration, it's necessary for automatic testing to work
+    // ------------
+    // Add your implementation here
 
 
-  // Add your implementation here
+    if ((s.size() == 2 && s.at(0) == s.at(1)) || s.size() == 1) {
+        return true;
+    }
+
+    if (s.at(0) == s.at(s.size()-1)) {
+        return palindrome_recursive(s.substr(1, s.size()-2));
+    }
+
+    return false;
+
 }
 
 // Do not modify rest of the code, or the automated testing won't work.
