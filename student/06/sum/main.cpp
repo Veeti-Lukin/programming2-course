@@ -32,6 +32,14 @@ int sum_recursive(std::vector<int>& v){
 
 
     // Add your implementation here
+    if (v.size() == 1) {
+        return v.at(0);
+    }
+    else {
+        int temp = v.at(0);
+        v.erase(v.begin());
+        return temp + sum_recursive(v);
+    }
 }
 
 // Do not modify rest of the code, or the automated testing won't work.
