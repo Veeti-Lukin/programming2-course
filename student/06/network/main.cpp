@@ -45,13 +45,21 @@ void storeToNetwork(Network& network, const std::string& id1,
 void printNetworkOfId(const Network& network, const std::string& id, int depth = 0) {
     std::string indentation(depth*2, '.');
     std::cout << indentation << id << std::endl;
-    // check if id is in network
-    if (network.find(id) == network.end()) {
-        return;
-    }
+
     for (const std::string& connectionId : network.at(id)) {
         printNetworkOfId(network, connectionId, depth+1);
     }
+}
+
+int countNetworkSizeOfId(const Network& network, const std::string& id) {
+    int sizeOfNetwork = 0;
+    if (network.find(id) != network.end()) {
+        sizeOfNetwork += network.at(id).size();
+        for (const std::string& connectionId : network.at(id)) {
+           sizeOfNetwork += countNetworkSizeOfId(network, connectionId);
+        }
+    }
+    return sizeOfNetwork;
 }
 
 int main()
@@ -89,7 +97,6 @@ int main()
             }
             std::string id1 = parts.at(1);
             std::string id2 = parts.at(2);
-
             storeToNetwork(network, id1, id2);
 
         }
@@ -101,7 +108,10 @@ int main()
                 continue;
             }
             std::string id = parts.at(1);
-
+            // check if id is in network
+            if (network.find(id) == network.end()) {
+                continue;
+            }
             printNetworkOfId(network, id);
 
         }
@@ -114,7 +124,7 @@ int main()
             }
             std::string id = parts.at(1);
 
-            // TODO: Implement the command here!
+            std::cout << countNetworkSizeOfId(network, id) << std::endl;
 
         }
         else if(command == "D" or command == "d")
