@@ -2,10 +2,13 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <map>
+#include <set>
+
+using Network = std::map<std::string, std::set<std::string>>;
 
 const std::string HELP_TEXT = "S = store id1 i2\nP = print id\n"
                               "C = count id\nD = depth id\n";
-
 
 std::vector<std::string> split(const std::string& s,
                                const char delimiter,
@@ -30,10 +33,20 @@ std::vector<std::string> split(const std::string& s,
     return result;
 }
 
+void storeToNetwork(Network& network, const std::string& id1,
+                    const std::string& id2) {
+    // check if the inviter is inside the network allready if not add inviter
+    if (network.find(id1) == network.end()) {
+        network.insert( {id1, {}} );
+    }
+    // add invited person ( set so no need to check if multiple of same id)
+    network.at(id1).insert(id2);
+}
+
 int main()
 {
     // TODO: Implement the datastructure here
-
+    Network network;
 
     while(true)
     {
@@ -60,7 +73,7 @@ int main()
             std::string id1 = parts.at(1);
             std::string id2 = parts.at(2);
 
-            // TODO: Implement the command here!
+            storeToNetwork(network, id1, id2);
 
         }
         else if(command == "P" or command == "p")
