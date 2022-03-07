@@ -54,13 +54,27 @@ void printNetworkOfId(const Network& network, const std::string& id, int depth =
 int countNetworkSizeOfId(const Network& network, const std::string& id) {
     int sizeOfNetwork = 0;
     if (network.find(id) != network.end()) {
-        sizeOfNetwork += network.at(id).size();
         for (const std::string& connectionId : network.at(id)) {
-           sizeOfNetwork += countNetworkSizeOfId(network, connectionId);
+           sizeOfNetwork += 1 + countNetworkSizeOfId(network, connectionId);
         }
     }
     return sizeOfNetwork;
 }
+
+int countNetworkDepthOfId(const Network& network, const std::string& id) {
+    int depthOfNetwork = 0;
+    if (network.find(id) != network.end()) {
+
+        for (const std::string& connectionId : network.at(id)) {
+
+           if (countNetworkDepthOfId(network, connectionId) > depthOfNetwork) {
+               depthOfNetwork = countNetworkDepthOfId(network, connectionId);
+           }
+        }
+    }
+    return depthOfNetwork +1;
+}
+
 
 int main()
 {
@@ -136,7 +150,7 @@ int main()
             }
             std::string id = parts.at(1);
 
-            // TODO: Implement the command here!
+            std::cout << countNetworkDepthOfId(network, id) << std::endl;
 
         }
         else if(command == "Q" or command == "q")
