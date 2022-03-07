@@ -46,6 +46,10 @@ void printNetworkOfId(const Network& network, const std::string& id, int depth =
     std::string indentation(depth*2, '.');
     std::cout << indentation << id << std::endl;
 
+    // check if id is in network
+    if (network.find(id) == network.end()) {
+        return;
+    }
     for (const std::string& connectionId : network.at(id)) {
         printNetworkOfId(network, connectionId, depth+1);
     }
@@ -116,10 +120,7 @@ int main()
                 continue;
             }
             std::string id = parts.at(1);
-            // check if id is in network
-            if (network.find(id) == network.end()) {
-                continue;
-            }
+
             printNetworkOfId(network, id);
 
         }
