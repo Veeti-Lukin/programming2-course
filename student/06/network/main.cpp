@@ -5,7 +5,7 @@
 #include <map>
 #include <set>
 
-using Network = std::map<std::string, std::set<std::string>>;
+using Network = std::map<std::string, std::vector<std::string>>;
 
 const std::string HELP_TEXT = "S = store id1 i2\nP = print id\n"
                               "C = count id\nD = depth id\n";
@@ -35,18 +35,35 @@ std::vector<std::string> split(const std::string& s,
 
 void storeToNetwork(Network& network, const std::string& id1,
                     const std::string& id2) {
-    // check if the inviter is inside the network allready if not add inviter
+    // check if the inviter is inside the network already if not add inviter
     if (network.find(id1) == network.end()) {
         network.insert( {id1, {}} );
     }
-    // add invited person ( set so no need to check if multiple of same id)
-    network.at(id1).insert(id2);
+    network.at(id1).push_back(id2);
+}
+
+void printNetworkOfId(const Network& network, const std::string& id, int depth = 0) {
+    std::string indentation(depth*2, '.');
+    std::cout << indentation << id << std::endl;
+    // check if id is in network
+    if (network.find(id) == network.end()) {
+        return;
+    }
+    for (const std::string& connectionId : network.at(id)) {
+        printNetworkOfId(network, connectionId, depth+1);
+    }
 }
 
 int main()
 {
     // TODO: Implement the datastructure here
     Network network;
+    storeToNetwork(network, "hugo", "laura");
+    storeToNetwork(network, "hugo", "jasper");
+    storeToNetwork(network, "laura", "helena");
+    storeToNetwork(network, "jasper", "maria");
+    storeToNetwork(network, "laura", "elias");
+    storeToNetwork(network, "helena", "sofia");
 
     while(true)
     {
@@ -85,7 +102,7 @@ int main()
             }
             std::string id = parts.at(1);
 
-            // TODO: Implement the command here!
+            printNetworkOfId(network, id);
 
         }
         else if(command == "C" or command == "c")
