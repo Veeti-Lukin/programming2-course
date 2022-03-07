@@ -80,12 +80,6 @@ int main()
 {
     // TODO: Implement the datastructure here
     Network network;
-    storeToNetwork(network, "hugo", "laura");
-    storeToNetwork(network, "hugo", "jasper");
-    storeToNetwork(network, "laura", "helena");
-    storeToNetwork(network, "jasper", "maria");
-    storeToNetwork(network, "laura", "elias");
-    storeToNetwork(network, "helena", "sofia");
 
     while(true)
     {
