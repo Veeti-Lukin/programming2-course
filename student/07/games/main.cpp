@@ -21,6 +21,16 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <map>
+
+using std::cout;
+using std::endl;
+using std::cout;
+using std::vector;
+using std::string;
+using std::cin;
+using std::getline;
+using std::map;
 
 // Casual split func, if delim char is between "'s, ignores it.
 std::vector<std::string> split( const std::string& str, char delim = ';' )

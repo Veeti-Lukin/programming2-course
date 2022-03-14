@@ -4,4 +4,8 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
+        game_statistics.cpp \
         main.cpp
+
+HEADERS += \
+    game_statistics.hh
