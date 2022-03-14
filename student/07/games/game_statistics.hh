@@ -13,6 +13,13 @@ public:
     // return true if adding was succesful, false if game already exists
     bool add_game(const std::string& game_name);
 
+    // adds a player with given name *player* to a given *game* with *score*
+    // to the <stats> data structure
+    // can also be used to set players score after adding
+    // return true if adding was succesful, false if game dosn't exists
+    bool add_player(const std::string& game, const std::string& player,
+                             int score);
+
 private:
     /* Data structure that holds the information of the games, players and scores
      * First maps key is name of the game.
