@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <set>
 
 using std::endl;
 using std::cout;
@@ -85,6 +86,36 @@ bool Game_statistics::print_game_stats(const string& game) {
         }
         else {
             cout << endl;
+        }
+    }
+    return true;
+}
+
+void Game_statistics::print_all_players() {
+    // set cant have dublicate players from diffrent games
+    std::set<string> players = {};
+
+    // add every playe to set
+    for (const auto& game : stats) {
+        for (const auto& player : stats.at(game.first)) {
+            players.insert(player.first);
+        }
+    }
+
+    // prints players from the set
+    cout << "All players in alphabetical order:" << endl;
+    for (const string& player : players) {
+        cout << player << endl;
+    }
+}
+
+bool Game_statistics::print_players_games(const string& player) {
+    for (const auto& game : stats) {
+        // search for player in inner map
+        map<string, int>::iterator player_iter = stats.at(game.first).find(player);
+        // player is found if iterator is not same as end iterator
+        if (player_iter != stats.at(game.first).end()) {
+            cout << game.first << endl;
         }
     }
     return true;

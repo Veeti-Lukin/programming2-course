@@ -162,11 +162,17 @@ int main() {
         }
 
         else if (command == "ALL_PLAYERS") {
-
+            stats_object.print_all_players();
         }
 
-        else if (command == "PLAYER") {
+        else if (command == "PLAYER")
+        {
+            // requires one parameter: name of the player
+            if (arguments.size() != 1) {
+                cout << INVALID_INPUT_ERROR << endl;
+            }
 
+            stats_object.print_players_games(arguments.at(0));
         }
 
         else if (command == "ADD_GAME")

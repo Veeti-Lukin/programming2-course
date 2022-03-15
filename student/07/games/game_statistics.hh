@@ -25,6 +25,14 @@ public:
 
     // prints all the players (keys in inner map) of the game in ascending score order
     bool print_game_stats(const std::string& game);
+
+    // prints the players(keys in inner maps) from every game(keys in outer map)
+    // checks that no dublicate name will be printed
+    void print_all_players();
+
+    // prints all the games(outer maps keys) the player plays (aka. wich have
+    // *player* as key in inner map)
+    bool print_players_games(const std::string& player);
 private:
     /* Data structure that holds the information of the games, players and scores
      * First maps key is name of the game.
