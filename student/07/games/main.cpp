@@ -1,7 +1,9 @@
 /*  Game statistics
  *
  * Desc:
- *  Acts as a game statistics with n commands:
+ *  Acts as a game statistics with n commands
+ *  some commands will need parameters that are marked with <parameter>
+ *  extra paramaeters will not cause an error they will only be left useless:
  * ALL_GAMES - Prints all known game names
  * GAME <game name> - Prints all players playing the given game
  * ALL_PLAYERS - Prints all known player names
@@ -51,9 +53,9 @@ const string PLAYER_NOT_FOUND_ERROR = "Error: Player could not be found.";
 const string GAME_ALREADY_EXISTS_ERROR = "Error: Already exists.";
 
 // Casual split func, if delim char is between "'s, ignores it.
-std::vector<std::string> split( const std::string& str, char delim = ';' )
+vector<string> split( const string& str, char delim = ';' )
 {
-    std::vector<std::string> result = {""};
+    vector<string> result = {""};
     bool inside_quatation = false;
     for ( auto current_char : str )
     {
@@ -157,6 +159,8 @@ int main() {
     }
 
     // user interface loop
+    // commands will test that they have enough parameters
+    // extra paramaeters will not give an error they will only be left useless
     while (true) {
 
         cout << PROMPT;
@@ -176,8 +180,9 @@ int main() {
         else if (command == "GAME")
         {
             // requires one parameter: name of the game
-            if (arguments.size() != 1) {
+            if (arguments.size() < 1) {
                 cout << INVALID_INPUT_ERROR << endl;
+                continue;
             }
 
             if (!stats_object.print_game_stats(arguments.at(0))) {
@@ -185,15 +190,17 @@ int main() {
             }
         }
 
-        else if (command == "ALL_PLAYERS") {
+        else if (command == "ALL_PLAYERS")
+        {
             stats_object.print_all_players();
         }
 
         else if (command == "PLAYER")
         {
             // requires one parameter: name of the player
-            if (arguments.size() != 1) {
+            if (arguments.size() < 1) {
                 cout << INVALID_INPUT_ERROR << endl;
+                continue;
             }
 
             if (!stats_object.print_players_games(arguments.at(0))) {
@@ -204,8 +211,9 @@ int main() {
         else if (command == "ADD_GAME")
         {
             // requires one parameter: name of the game
-            if (arguments.size() != 1) {
+            if (arguments.size() < 1) {
                 cout << INVALID_INPUT_ERROR << endl;
+                continue;
             }
 
             if (!stats_object.add_game(arguments.at(0))) {
@@ -219,8 +227,9 @@ int main() {
         else if (command == "ADD_PLAYER")
         {
             //requires 3 parameters: game player score
-            if (arguments.size() != 3) {
+            if (arguments.size() < 3) {
                 cout << INVALID_INPUT_ERROR << endl;
+                continue;
             }
 
             // check if score is numeric <stoi_with_check> returns -1 if not
@@ -241,8 +250,9 @@ int main() {
         else if (command == "REMOVE")
         {
             // requires one parameter: name of the player
-            if (arguments.size() != 1) {
+            if (arguments.size() < 1) {
                 cout << INVALID_INPUT_ERROR << endl;
+                continue;
             }
 
             if (stats_object.remove_player(arguments.at(0))) {
@@ -253,7 +263,8 @@ int main() {
             }
         }
 
-        else if (command == "QUIT") {
+        else if (command == "QUIT")
+        {
              return EXIT_SUCCESS;
         }
 
