@@ -211,6 +211,9 @@ int main() {
             if (!stats_object.add_game(arguments.at(0))) {
                 cout << GAME_ALREADY_EXISTS_ERROR << endl;
             }
+            else {
+                cout << "Game was added." << endl;
+            }
         }
 
         else if (command == "ADD_PLAYER")
@@ -229,6 +232,9 @@ int main() {
             if (!stats_object.add_player(arguments.at(0), arguments.at(1),
                                     score)) {
                 cout << GAME_NOT_FOUND_ERROR << endl;
+            }
+            else {
+                cout << "Player was added." << endl;
             }
         }
 
