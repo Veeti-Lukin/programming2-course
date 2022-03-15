@@ -125,8 +125,13 @@ bool Game_statistics::print_players_games(const string& player) {
         map<string, int>::iterator player_iter = stats.at(game.first).find(player);
         // player is found if iterator is not same as end iterator
         if (player_iter != stats.at(game.first).end()) {
+            if (!player_found) {
+                cout << "Player " << player << " playes the following games:" << endl;
+                player_found = true;
+            }
+
             cout << game.first << endl;
-            player_found = true;
+
         }
     }
     return player_found;
