@@ -64,9 +64,75 @@ std::vector<std::string> split( const std::string& str, char delim = ';' )
     return result;
 }
 
+// Converts the given numeric string to the corresponding integer
+// (by calling stoi).
+// If the given string is not numeric, returns -1.
+int stoi_with_check(const string& str)
+{
+    bool is_numeric = true;
+    for(unsigned int i = 0; i < str.length(); ++i){
+        if(not isdigit(str.at(i))){
+            is_numeric = false;
+            break;
+        }
+    }
+    if(is_numeric){
+        return stoi(str);
+    }
+    else{
+        return -1;
+    }
+}
+
+// Opens and reads a csv file by given *file_name*
+// csv file has to be formated as "game;player;score"
+// error messege will be printed if there is invalid line, file cant be opened,
+// or score is not numeric. return true if succeeded, false otherwise.
+bool read_game_stats_from_file(const string& file_name,
+                               Game_statistics& stats_object) {
+
+    std::ifstream file_object(file_name);
+    // check if there is an error opening the file
+    if (!file_object) {
+        cout << "Error: File could not be read." << endl;
+        return false;
+    }
+
+    string line = "";
+    while (getline(file_object, line)) {
+        vector<string> parts = split(line);
+
+        if (parts.size() != 3) {
+            cout << "Error: Invalid format in file." << endl;
+            return false;
+        }
+        string game = parts.at(0);
+        string player = parts.at(1);
+        int score = stoi_with_check(parts.at(2));
+
+        // <stoi_with_check> reutned -1 if the value was not numeric
+        if (score == -1) {
+            cout << "Error: Invalid format in file." << endl;
+            return false;
+        }
+
+        stats_object.add_game(game); // does nothing if the game already exists
+        stats_object.add_player(game, player, score);
+    }
+    return true;
+}
+
 int main() {
     // object that handles all the information of the players games and scores
     Game_statistics stats_object = Game_statistics();
+
+    // read game stats from source file
+    cout << "Give a name for input file: ";
+    string file_name = "";
+    getline(cin, file_name);
+    if (!read_game_stats_from_file(file_name, stats_object)) {
+        return EXIT_FAILURE;
+    }
 
     // user interface loop
     while (true) {
