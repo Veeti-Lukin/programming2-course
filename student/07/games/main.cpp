@@ -136,6 +136,14 @@ bool read_game_stats_from_file(const string& file_name,
     return true;
 }
 
+// converts given string to upppercase and returnds it
+string  convert_upper(string str) {
+    for (char& c : str) {
+        c = toupper(c);
+    }
+    return str;
+}
+
 int main() {
     // object that handles all the information of the players games and scores
     Game_statistics stats_object = Game_statistics();
@@ -157,7 +165,7 @@ int main() {
 
         // parse command out of vector so that only parameters are left in vector
         vector<string> arguments = split(input, ' ');
-        string command = arguments.at(0);
+        string command = convert_upper(arguments.at(0));
         arguments.erase(arguments.begin());
 
         if (command == "ALL_GAMES")
