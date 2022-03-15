@@ -123,8 +123,9 @@ bool read_game_stats_from_file(const string& file_name,
         string player = parts.at(1);
         int score = stoi_with_check(parts.at(2));
 
-        // <stoi_with_check> reutned -1 if the value was not numeric
-        if (score == -1) {
+        // <stoi_with_check> reutned -1 if the value was not numeric 
+        // empty player or game names are not allowed
+        if (score == -1 || game == "" || player == "") {
             cout << "Error: Invalid format in file." << endl;
             return false;
         }
