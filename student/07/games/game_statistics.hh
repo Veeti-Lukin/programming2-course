@@ -1,5 +1,23 @@
 #ifndef GAME_STATISTICS_HH
 #define GAME_STATISTICS_HH
+/*
+* Program author
+* Name: Veeti Lukin
+* Student number: 50797635
+* UserID: gtvelu
+* E-Mail: veeti.lukin@tuni.fi
+*
+* Notes about the class and it's implementation:
+*   Can be used for storing information of players playing games and their scores.
+*   This is only a header file.(check main.cpp for more information about the program
+*   and game_statistics.cpp for class implementation.)
+*
+*   Public interface offers methods to add a game, add a player to a game,
+*   remove player from all games, print all games, all players,
+*   print stats of specific game and to print all games of specific player.
+*
+*   Inofrmation of games and their players and scores is saved in nested map.
+*/
 
 #include <string>
 #include <map>

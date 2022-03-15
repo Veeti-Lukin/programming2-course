@@ -1,3 +1,15 @@
+/*
+* Program author
+* Name: Veeti Lukin
+* Student number: 50797635
+* UserID: gtvelu
+* E-Mail: veeti.lukin@tuni.fi
+*
+* Notes about the class and it's implementation:
+*   This is only class implemention.
+*   Check header file for more infomation.
+*/
+
 #include "game_statistics.hh"
 #include <iostream>
 #include <string>

@@ -1,8 +1,6 @@
-/*  COMP.CS.100 Project 2: GAME STATISTICS
- * ===============================
- * EXAMPLE SOLUTION
- * ===============================
+/*  Game statistics
  *
+ * Desc:
  *  Acts as a game statistics with n commands:
  * ALL_GAMES - Prints all known game names
  * GAME <game name> - Prints all players playing the given game
@@ -17,7 +15,19 @@
  *  The data file's lines should be in format game_name;player_name;score
  * Otherwise the program execution terminates instantly (but still gracefully).
  *
- * */
+ * Program author
+ * Name: Veeti Lukin
+ * Student number: 50797635
+ * UserID: gtvelu
+ * E-Mail: veeti.lukin@tuni.fi
+ *
+ * Notes about the program and it's implementation:
+ *  Stats of the games is implemented in class that contains datastructure of
+ *  information of the games, players and scores.
+ *  Main will handle csv file reading and all interaction with user.
+ *  All changes to game stats and stat printing will be done from Game_statistics
+ *  instances public interface
+ */
 #include "game_statistics.hh"
 #include <iostream>
 #include <string>
