@@ -179,7 +179,12 @@ int main() {
                 cout << INVALID_INPUT_ERROR << endl;
             }
 
-            int score = stoi(arguments.at(2));
+            // check if score is numeric <stoi_with_check> returns -1 if not
+            int score = stoi_with_check(arguments.at(2));
+            if (score == -1) {
+                cout << INVALID_INPUT_ERROR << endl;
+            }
+
             stats_object.add_player(arguments.at(0), arguments.at(1),
                                     score);
         }
