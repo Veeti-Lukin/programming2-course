@@ -203,7 +203,11 @@ int main() {
         }
 
         else if (command == "REMOVE") {
-
+            // requires one parameter: name of the player
+            if (arguments.size() != 1) {
+                cout << INVALID_INPUT_ERROR << endl;
+            }
+            stats_object.remove_player(arguments.at(0));
         }
 
         else if (command == "QUIT") {

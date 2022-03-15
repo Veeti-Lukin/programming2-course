@@ -33,6 +33,10 @@ public:
     // prints all the games(outer maps keys) the player plays (aka. wich have
     // *player* as key in inner map)
     bool print_players_games(const std::string& player);
+
+    // remove player (*player* score pair) from all games (aka. every inner map
+    // the *player* key is found)
+    bool remove_player(const std::string& player);
 private:
     /* Data structure that holds the information of the games, players and scores
      * First maps key is name of the game.

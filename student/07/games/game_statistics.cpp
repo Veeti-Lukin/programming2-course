@@ -120,3 +120,23 @@ bool Game_statistics::print_players_games(const string& player) {
     }
     return true;
 }
+
+bool Game_statistics::remove_player(const string& player) {
+    bool player_found = false;
+    for (const auto& game : stats) {
+        // search for player in inner map
+        map<string, int>::iterator player_iter = stats.at(game.first).find(player);
+        // player is found if iterator is not same as end iterator
+        if (player_iter != stats.at(game.first).end()) {
+            stats.at(game.first).erase(player);
+            player_found = true;
+        }
+    }
+    if (player_found) {
+        cout << "Player was removed from all games." << endl;
+    }
+    else {
+        cout << "Error: Player could not be found." << endl;
+    }
+    return true;
+}
