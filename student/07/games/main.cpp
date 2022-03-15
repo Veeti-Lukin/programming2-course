@@ -36,6 +36,9 @@ using std::map;
 
 const string PROMPT = "games> ";
 const string INVALID_INPUT_ERROR = "Error: Invalid input.";
+const string GAME_NOT_FOUND_ERROR = "Error: Game could not be found.";
+const string PLAYER_NOT_FOUND_ERROR = "Error: Player could not be found.";
+const string GAME_ALREADY_EXISTS_ERROR = "Error: Already exists.";
 
 // Casual split func, if delim char is between "'s, ignores it.
 std::vector<std::string> split( const std::string& str, char delim = ';' )
@@ -158,7 +161,9 @@ int main() {
                 cout << INVALID_INPUT_ERROR << endl;
             }
 
-            stats_object.print_game_stats(arguments.at(0));
+            if (!stats_object.print_game_stats(arguments.at(0))) {
+                cout << GAME_NOT_FOUND_ERROR << endl;
+            }
         }
 
         else if (command == "ALL_PLAYERS") {
@@ -172,7 +177,9 @@ int main() {
                 cout << INVALID_INPUT_ERROR << endl;
             }
 
-            stats_object.print_players_games(arguments.at(0));
+            if (!stats_object.print_players_games(arguments.at(0))) {
+                cout << PLAYER_NOT_FOUND_ERROR << endl;
+            }
         }
 
         else if (command == "ADD_GAME")
@@ -182,7 +189,9 @@ int main() {
                 cout << INVALID_INPUT_ERROR << endl;
             }
 
-            stats_object.add_game(arguments.at(0));
+            if (!stats_object.add_game(arguments.at(0))) {
+                cout << GAME_ALREADY_EXISTS_ERROR << endl;
+            }
         }
 
         else if (command == "ADD_PLAYER")
@@ -198,16 +207,25 @@ int main() {
                 cout << INVALID_INPUT_ERROR << endl;
             }
 
-            stats_object.add_player(arguments.at(0), arguments.at(1),
-                                    score);
+            if (!stats_object.add_player(arguments.at(0), arguments.at(1),
+                                    score)) {
+                cout << GAME_NOT_FOUND_ERROR << endl;
+            }
         }
 
-        else if (command == "REMOVE") {
+        else if (command == "REMOVE")
+        {
             // requires one parameter: name of the player
             if (arguments.size() != 1) {
                 cout << INVALID_INPUT_ERROR << endl;
             }
-            stats_object.remove_player(arguments.at(0));
+
+            if (stats_object.remove_player(arguments.at(0))) {
+                cout << "Player was removed from all games." << endl;
+            }
+            else {
+                cout << PLAYER_NOT_FOUND_ERROR << endl;
+            }
         }
 
         else if (command == "QUIT") {

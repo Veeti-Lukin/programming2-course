@@ -20,7 +20,6 @@ Game_statistics::Game_statistics()
 bool Game_statistics::add_game(const string& game_name) {
     // check if game already exists
     if (stats.find(game_name) != stats.end()) {
-        cout << "Error: Already exists." << endl;
         return false;
     }
 
@@ -32,7 +31,6 @@ bool Game_statistics::add_player(const string& game, const string& player,
                                           int score) {
     // check if game exists
     if (stats.find(game) == stats.end()) {
-        cout << "Error: Game could not be found." << endl;
         return false;
     }
     // add player inside the games inner map
@@ -54,7 +52,6 @@ void Game_statistics::print_all_games() {
 bool Game_statistics::print_game_stats(const string& game) {
     // check if game exists
     if (stats.find(game) == stats.end()) {
-        cout << "Error: Game could not be found." << endl;
         return false;
     }
 
@@ -110,15 +107,17 @@ void Game_statistics::print_all_players() {
 }
 
 bool Game_statistics::print_players_games(const string& player) {
+    bool player_found = false;
     for (const auto& game : stats) {
         // search for player in inner map
         map<string, int>::iterator player_iter = stats.at(game.first).find(player);
         // player is found if iterator is not same as end iterator
         if (player_iter != stats.at(game.first).end()) {
             cout << game.first << endl;
+            player_found = true;
         }
     }
-    return true;
+    return player_found;
 }
 
 bool Game_statistics::remove_player(const string& player) {
@@ -132,11 +131,5 @@ bool Game_statistics::remove_player(const string& player) {
             player_found = true;
         }
     }
-    if (player_found) {
-        cout << "Player was removed from all games." << endl;
-    }
-    else {
-        cout << "Error: Player could not be found." << endl;
-    }
-    return true;
+    return player_found;
 }
