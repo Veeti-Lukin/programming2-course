@@ -18,10 +18,12 @@
  * Otherwise the program execution terminates instantly (but still gracefully).
  *
  * */
+#include "game_statistics.hh"
 #include <iostream>
 #include <string>
 #include <vector>
 #include <map>
+#include <fstream>
 
 using std::cout;
 using std::endl;
@@ -31,6 +33,9 @@ using std::string;
 using std::cin;
 using std::getline;
 using std::map;
+
+const string PROMPT = "games> ";
+const string INVALID_INPUT_ERROR = "Error: Invalid input.";
 
 // Casual split func, if delim char is between "'s, ignores it.
 std::vector<std::string> split( const std::string& str, char delim = ';' )
@@ -59,7 +64,70 @@ std::vector<std::string> split( const std::string& str, char delim = ';' )
     return result;
 }
 
-int main()
-{
-    return EXIT_SUCCESS;
+int main() {
+    // object that handles all the information of the players games and scores
+    Game_statistics stats_object = Game_statistics();
+
+    // user interface loop
+    while (true) {
+
+        cout << PROMPT;
+        string input = "";
+        getline(cin, input );
+
+        // parse command out of vector so that only parameters are left in vector
+        vector<string> arguments = split(input);
+        string command = arguments.at(0);
+        arguments.erase(arguments.begin());
+
+        if (command == "ALL_GAMES") {
+
+        }
+
+        else if (command == "GAME") {
+
+        }
+
+        else if (command == "ALL_PLAYERS") {
+
+        }
+
+        else if (command == "PLAYER") {
+
+        }
+
+        else if (command == "ADD_GAME")
+        {
+            // requires one parameter: name of the game
+            if (arguments.size() != 1) {
+                cout << INVALID_INPUT_ERROR << endl;
+            }
+
+            stats_object.add_game(arguments.at(0));
+        }
+
+        else if (command == "ADD_PLAYER")
+        {
+            //requires 3 parameters: game player score
+            if (arguments.size() != 3) {
+                cout << INVALID_INPUT_ERROR << endl;
+            }
+
+            int score = stoi(arguments.at(2));
+            stats_object.add_player(arguments.at(0), arguments.at(1),
+                                    score);
+        }
+
+        else if (command == "REMOVE") {
+
+        }
+
+        else if (command == "QUIT") {
+             return EXIT_SUCCESS;
+        }
+
+        else {
+            cout << INVALID_INPUT_ERROR << endl;
+        }
+    }
 }

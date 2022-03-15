@@ -19,6 +19,7 @@ Game_statistics::Game_statistics()
 bool Game_statistics::add_game(const string& game_name) {
     // check if game already exists
     if (stats.find(game_name) != stats.end()) {
+        cout << "Error: Already exists." << endl;
         return false;
     }
 
