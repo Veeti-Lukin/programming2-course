@@ -142,7 +142,7 @@ int main() {
         getline(cin, input );
 
         // parse command out of vector so that only parameters are left in vector
-        vector<string> arguments = split(input);
+        vector<string> arguments = split(input, ' ');
         string command = arguments.at(0);
         arguments.erase(arguments.begin());
 
@@ -151,8 +151,14 @@ int main() {
             stats_object.print_all_games();
         }
 
-        else if (command == "GAME") {
+        else if (command == "GAME")
+        {
+            // requires one parameter: name of the game
+            if (arguments.size() != 1) {
+                cout << INVALID_INPUT_ERROR << endl;
+            }
 
+            stats_object.print_game_stats(arguments.at(0));
         }
 
         else if (command == "ALL_PLAYERS") {

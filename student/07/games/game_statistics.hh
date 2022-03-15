@@ -22,6 +22,9 @@ public:
 
     // prints all the games (keys of the first map) in <stats> in ascii order
     void print_all_games();
+
+    // prints all the players (keys in inner map) of the game in ascending score order
+    bool print_game_stats(const std::string& game);
 private:
     /* Data structure that holds the information of the games, players and scores
      * First maps key is name of the game.
