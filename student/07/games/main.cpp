@@ -146,8 +146,9 @@ int main() {
         string command = arguments.at(0);
         arguments.erase(arguments.begin());
 
-        if (command == "ALL_GAMES") {
-
+        if (command == "ALL_GAMES")
+        {
+            stats_object.print_all_games();
         }
 
         else if (command == "GAME") {

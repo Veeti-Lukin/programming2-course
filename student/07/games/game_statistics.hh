@@ -20,6 +20,8 @@ public:
     bool add_player(const std::string& game, const std::string& player,
                              int score);
 
+    // prints all the games (keys of the first map) in <stats> in ascii order
+    void print_all_games();
 private:
     /* Data structure that holds the information of the games, players and scores
      * First maps key is name of the game.

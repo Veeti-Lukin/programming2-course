@@ -41,3 +41,11 @@ bool Game_statistics::add_player(const string& game, const string& player,
     stats.at(game).at(player) = score;
     return true;
 }
+
+void Game_statistics::print_all_games() {
+    cout << "All games in alphabetical order:" << endl;
+
+    for (const auto& game : stats) {
+        cout << game.first << endl;
+    }
+}
