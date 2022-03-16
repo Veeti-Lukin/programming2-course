@@ -39,18 +39,18 @@ public:
                              int score);
 
     // prints all the games (keys of the first map) in <stats> in ascii order
-    void print_all_games();
+    void print_all_games() const;
 
     // prints all the players (keys in inner map) of the game in ascending score order
-    bool print_game_stats(const std::string& game);
+    bool print_game_stats(const std::string& game) const;
 
     // prints the players(keys in inner maps) from every game(keys in outer map)
     // checks that no dublicate name will be printed
-    void print_all_players();
+    void print_all_players() const;
 
     // prints all the games(outer maps keys) the player plays (aka. wich have
     // *player* as key in inner map)
-    bool print_players_games(const std::string& player);
+    bool print_players_games(const std::string& player) const;
 
     // remove player (*player* score pair) from all games (aka. every inner map
     // the *player* key is found)

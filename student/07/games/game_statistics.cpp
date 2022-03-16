@@ -51,7 +51,7 @@ bool Game_statistics::add_player(const string& game, const string& player,
     return true;
 }
 
-void Game_statistics::print_all_games() {
+void Game_statistics::print_all_games() const {
     cout << "All games in alphabetical order:" << endl;
 
     for (const auto& game : stats) {
@@ -59,7 +59,7 @@ void Game_statistics::print_all_games() {
     }
 }
 
-bool Game_statistics::print_game_stats(const string& game) {
+bool Game_statistics::print_game_stats(const string& game) const{
     // check if game exists
     if (stats.find(game) == stats.end()) {
         return false;
@@ -98,7 +98,7 @@ bool Game_statistics::print_game_stats(const string& game) {
     return true;
 }
 
-void Game_statistics::print_all_players() {
+void Game_statistics::print_all_players() const{
     // set cant have dublicate players from diffrent games
     std::set<string> players = {};
 
@@ -116,11 +116,11 @@ void Game_statistics::print_all_players() {
     }
 }
 
-bool Game_statistics::print_players_games(const string& player) {
+bool Game_statistics::print_players_games(const string& player) const {
     bool player_found = false;
     for (const auto& game : stats) {
         // search for player in inner map
-        map<string, int>::iterator player_iter = stats.at(game.first).find(player);
+        map<string, int>::const_iterator player_iter = stats.at(game.first).find(player);
         // player is found if iterator is not same as end iterator
         if (player_iter != stats.at(game.first).end()) {
             if (!player_found) {
