@@ -51,6 +51,7 @@ const string PLAYER_NOT_FOUND_ERROR = "Error: Player could not be found.";
 const string GAME_ALREADY_EXISTS_ERROR = "Error: Already exists.";
 
 // Casual split func, if delim char is between "'s, ignores it.
+// Empty strings between delimeters will be skipped
 vector<string> split( const string& str, char delim = ';' )
 {
     vector<string> result = {""};
@@ -63,7 +64,9 @@ vector<string> split( const string& str, char delim = ';' )
         }
         else if ( current_char == delim and not inside_quatation )
         {
-            result.push_back("");
+            if (result.back() != ""){
+                result.push_back("");
+            }
         }
         else
         {
@@ -125,7 +128,7 @@ bool read_game_stats_from_file(const string& file_name,
 
         // <stoi_with_check> reutned -1 if the value was not numeric 
         // empty player or game names are not allowed
-        if (score == -1 || game == "" || player == "") {
+        if (score == -1) {
             cout << "Error: Invalid format in file." << endl;
             return false;
         }
