@@ -42,6 +42,7 @@ public:
     void print_all_games() const;
 
     // prints all the players (keys in inner map) of the game in ascending score order
+    // return false if *game* cannot be found, true if print was succesfull
     bool print_game_stats(const std::string& game) const;
 
     // prints the players(keys in inner maps) from every game(keys in outer map)
@@ -50,10 +51,12 @@ public:
 
     // prints all the games(outer maps keys) the player plays (aka. wich have
     // *player* as key in inner map)
+    // return false if *player* cannot be found, true if print was succesfull
     bool print_players_games(const std::string& player) const;
 
     // remove player (*player* score pair) from all games (aka. every inner map
     // the *player* key is found)
+    // return false if *player* cannot be found, true if print was succesfull
     bool remove_player(const std::string& player);
 private:
     /* Data structure that holds the information of the games, players and scores
