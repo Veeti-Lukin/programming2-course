@@ -34,17 +34,15 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <map>
 #include <fstream>
 
 using std::cout;
 using std::endl;
-using std::cout;
 using std::vector;
 using std::string;
 using std::cin;
 using std::getline;
-using std::map;
+
 
 const string PROMPT = "games> ";
 const string INVALID_INPUT_ERROR = "Error: Invalid input.";
