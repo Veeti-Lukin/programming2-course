@@ -183,6 +183,7 @@ int main() {
             // TODO: Add functionality here
 
         } else if(command == "Q" or command == "q") {
+            write_data(file_name, user_ids);
             // Deleting the data structure: deallocating memory
             // and nullifying pointers
             for(auto pair: student_numbers) {
