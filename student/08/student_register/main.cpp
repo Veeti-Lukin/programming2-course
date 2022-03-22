@@ -90,6 +90,29 @@ bool is_valid_phone_number(const std::string number) {
     return true;
 }
 
+bool change_phone_number(const std::string& id,
+                         std::map< std::string, Student* >& alphabetical_order,
+                         std::map< std::string, Student* >& numerical_order) {
+    if (numerical_order.find(id) == numerical_order.end()) {
+        std::cout << "There is no student with the given number!" << std::endl
+        << std::endl;
+        return false;
+    }
+
+    std::cout << "Enter a new phone number: ";
+    std::string phone_num;
+    getline(std::cin, phone_num);
+    std:: cout << std::endl;
+
+    if (!is_valid_phone_number(phone_num)) {
+        return false;
+    }
+
+    numerical_order.at(id)->phone_number = phone_num;
+    alphabetical_order.at(numerical_order.at(id)->user_id)->phone_number = phone_num;
+    return true;
+}
+
 
 int main() {
     std::string file_name = "";
@@ -144,8 +167,9 @@ int main() {
                 std::cout << "Erroneous parameters!" << std::endl << HELP_TEXT;
                 continue;
             }
-            // TODO: Add functionality here
+            change_phone_number(parts.at(1), user_ids, student_numbers);
 
+            // TODO: Add functionality here
 
         } else if(command == "Q" or command == "q") {
             // Deleting the data structure: deallocating memory
