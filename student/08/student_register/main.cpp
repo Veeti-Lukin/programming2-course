@@ -113,6 +113,17 @@ bool change_phone_number(const std::string& id,
     return true;
 }
 
+void write_data(const std::string& file_name,
+                std::map< std::string, Student* >& alphabetical_order) {
+    std::ofstream file(file_name);
+    for (auto& pair: alphabetical_order) {
+       file << pair.second->student_number << ";";
+       file << pair.second->user_id << ";";
+       file << pair.second->phone_number << ";";
+       file << pair.second->email << ";";
+       file << pair.second->skype << std::endl;
+    }
+}
 
 int main() {
     std::string file_name = "";
@@ -145,7 +156,7 @@ int main() {
                 std::cout << "Erroneous parameters!" << std::endl  << HELP_TEXT;
                 continue;
             } else {
-                for(auto pair: user_ids) {
+                for(auto& pair: user_ids) {
                     print_data(*(pair.second));
                 }
             }
@@ -156,7 +167,7 @@ int main() {
                 std::cout << "Erroneous parameters!" << std::endl << HELP_TEXT;
                 continue;
             } else {
-                for(auto pair: student_numbers) {
+                for(auto& pair: student_numbers) {
                     print_data(*(pair.second));
                 }
             }
