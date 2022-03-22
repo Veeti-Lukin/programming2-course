@@ -119,6 +119,7 @@ void write_data(const std::string& file_name,
     for (auto& pair: alphabetical_order) {
        file << pair.second->student_number << ";";
        file << pair.second->user_id << ";";
+       file << pair.second->name << ";";
        file << pair.second->phone_number << ";";
        file << pair.second->email << ";";
        file << pair.second->skype << std::endl;
