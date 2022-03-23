@@ -9,6 +9,7 @@ int main()
     Queue q(VEHICLES_PER_GREEN_PERIOD);
     cout << "Current cycle is " << VEHICLES_PER_GREEN_PERIOD << ", i.e. at most "
          << VEHICLES_PER_GREEN_PERIOD << " vehicles can pass during the same green period" << endl;
+
     while(true) {
         cout << "(a)dd, (p)rint, (s)witch light, (r)eset cycle, (q)uit: ";
         string choice = "";

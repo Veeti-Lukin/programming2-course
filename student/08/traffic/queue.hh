@@ -54,6 +54,9 @@ private:
 
     // You can define more private features here
 
+    // If the color of traffic light is green, remove the first vehicle from queue
+    std::string dequeue();
+
 };
 
 #endif // QUEUE_HH
