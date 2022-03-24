@@ -114,10 +114,13 @@ bool read_game_stats_from_file(const string& file_name,
         return false;
     }
 
+    // read file line by line until end
     string line = "";
     while (getline(file_object, line)) {
         vector<string> parts = split(line);
 
+        // check if line has is formatted as "game;player;score"
+        // wll also be false if some of these values is empty between seperators
         if (parts.size() != 3) {
             cout << "Error: Invalid format in file." << endl;
             return false;
