@@ -60,6 +60,14 @@ const vector<Command> COMMANDS = {
     {"Q", 0, true, nullptr}
 };
 
+std::string to_upper(const std::string& str) {
+    std::string temp = "";
+    for (char c: str) {
+        temp.push_back(toupper(c));
+    }
+    return temp;
+}
+
 
 int main() {
 
@@ -81,13 +89,49 @@ int main() {
 
         vector<string> pieces = split(line, ' ', true);
 
+
         if(pieces.size() == 0){
             continue;
         }
 
-        string command_to_be_executed = pieces.at(0);
+        string command_to_be_executed = to_upper(pieces.at(0));
+        pieces.erase(pieces.begin());
 
         // TODO: Implement command execution here!
+        bool command_found = false;
+
+        std::vector<double> parameters_as_doubles;
+
+        for (const Command &cmd : COMMANDS) {
+            if (cmd.str == command_to_be_executed) {
+                command_found = true;
+
+                //check if parameter amount is right
+                if (cmd.parameter_number != pieces.size()) {
+                    std::cout << "Error: wrong number of parameters." << std::endl;
+                    continue;
+                }
+                if (cmd.action == nullptr) {
+                    std::cout << GREETING_AT_END << std::endl;
+                    return EXIT_SUCCESS;
+                }
+
+                double operand1;
+                double operand2;
+                if (!string_to_double(pieces.at(0), operand1) ||
+                        !string_to_double(pieces.at(1), operand2)) {
+                    std::cout << "Error: a non-number operand." << std::endl;
+                    continue;
+                }
+
+                std::cout << cmd.action(operand1, operand2)
+                          << endl;
+            }
+        }
+
+        if (!command_found) {
+            std::cout << "Error: unknown command." << endl;
+        }
 
     }
 }
