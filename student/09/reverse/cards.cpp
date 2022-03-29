@@ -34,10 +34,25 @@ bool Cards::remove(int &id) {
     return true;
 }
 
-void Cards::reverse()
-{
+void Cards::reverse() {
+    std::shared_ptr<Card_data> current = top_;
+    std::shared_ptr<Card_data> previous = nullptr;
+    std::shared_ptr<Card_data> next = nullptr;
 
+    while (current != nullptr) {
+        // Store next
+        next = current->next;
+
+        // Reverse current node's pointer
+        current->next = previous;
+
+        // Move pointers one position ahead.
+        previous = current;
+        current = next;
+    }
+    top_ = previous;
 }
+
 
 // Tip for writing code more efficiently:
 // Do not write the stubs of the methods remove and reverse by yourself here,
