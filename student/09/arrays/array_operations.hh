@@ -27,6 +27,6 @@ void copy(int* itemptr, int* endptr, int* targetptr);
  * int* leftptr: pointer to the first element of the reversable part
  * int* rightptr: pointer to the next memory address after the reversable part
  */
-void reverse(int* leftptr, int* rightptr);
+void reverse(int *leftptr, int *rightptr);
 
 #endif
