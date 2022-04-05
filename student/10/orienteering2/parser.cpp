@@ -5,6 +5,8 @@
 #include <vector>
 #include <algorithm>
 
+using uint = unsigned int;
+
 const std::string ERROR_IN_FORMAT = "Error: Incorrect line in input file";
 
 bool read_size(std::ifstream &file, std::shared_ptr<OrienteeringMap> routes);
