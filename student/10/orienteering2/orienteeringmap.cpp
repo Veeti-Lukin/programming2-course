@@ -2,9 +2,6 @@
 #include <iostream>
 #include <string>
 
-const std::string ROUTE_NOT_FOUND_ERROR
-                        = "Error: Route named tuntematon can't be found";
-
 
 OrienteeringMap::OrienteeringMap()
 {
@@ -101,7 +98,8 @@ void OrienteeringMap::print_route(const std::string &name) const {
 
     // check if route exists
     if (routes.find(name) == routes.end()) {
-        std::cout << ROUTE_NOT_FOUND_ERROR << std::endl;
+        std::cout << "Error: Route named " << name << " can't be found"
+                  << std::endl;
         return;
     }
 
