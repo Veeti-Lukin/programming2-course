@@ -16,7 +16,7 @@
 
 #include "route.hh"
 #include <string>
-#include <unordered_map>
+#include <map>
 
 // struct Point is defined in route.hh
 /*struct Point{
@@ -92,12 +92,12 @@ private:
 
     // datastructure for containing all Point objects on the map.
     // name of the point as a key
-    std::unordered_map<std::string, Point> points = {};
+    std::map<std::string, Point> points = {};
 
     // datastucture for containing all route object.
     // routes have pointers for their own orienteering points
     // name of the route as a key
-    std::unordered_map<std::string, Route> routes = {};
+    std::map<std::string, Route> routes = {};
 };
 
 #endif // ORIENTEERINGMAP_HH
