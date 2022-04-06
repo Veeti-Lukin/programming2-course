@@ -1,6 +1,28 @@
 #ifndef ROUTE_HH
 #define ROUTE_HH
 
+/*
+* Program author
+* Name: Veeti Lukin
+* Student number: 50797635
+* UserID: gtvelu
+* E-Mail: veeti.lukin@tuni.fi
+*
+* Notes about the class and it's implementation:
+*   Can be used for storing information of orienteering Route
+*   This is only a header file.(check orienteeringmap.cpp for more information
+*   about the program and route.cpp for class implementation.)
+*
+*   Public interface offers methods add a point to route, check if point is on route
+*   print the points of the route, get lenght of the route and
+*   method for getting continious raise after specific point on the route.
+*
+*   Points itself are stored in instance of OrienteeringMap class
+*   wich contains instances of this class.
+*   Points on this route are referenced with linked list of pointers to
+*   the actual Point objects
+*/
+
 #include <string>
 
 // models single orienteering point on orienteering map
@@ -42,7 +64,7 @@ public:
     // calculates total lenght of the route and returns it
     float get_lenght() const;
 
-    // returns continuous rise, when moving from the given point along the route.
+    // calculates continuous rise, when moving from the given point along the route.
     // Continuous rise means a partial route, the starting point of which is
     // the given point and which contains no declivity, just only rise or flat.
     int get_continious_rise_from_point(const std::string point_name) const;

@@ -1,3 +1,15 @@
+/*
+* Program author
+* Name: Veeti Lukin
+* Student number: 50797635
+* UserID: gtvelu
+* E-Mail: veeti.lukin@tuni.fi
+*
+* Notes about the class and it's implementation:
+*   This is only class implemention.
+*   Check header file for more infomation.
+*/
+
 #include "route.hh"
 #include <iostream>
 #include <cmath>
@@ -7,7 +19,7 @@ Route::Route()
 }
 
 Route::~Route() {
-
+    // removing Node objects from memory
     while (start_ != nullptr) {
         Node* temp = start_;
         start_ = start_->next;
@@ -70,6 +82,7 @@ void Route::print() const {
 
 float Route::get_lenght() const{
 
+    // empty route
     if(start_ == nullptr) {
         return 0;
     }
@@ -97,8 +110,8 @@ int Route::get_continious_rise_from_point(std::string point_name) const{
     int last_height = 0;
     bool allow_counting = false;
 
-    // will brake if in end
-    //or if decrease in heigh is detected aka continius rising has ended
+    // will brake if in end of the route
+    // or if decrease in heigh is detected aka continius rising has ended
     while (current != nullptr && current->point->height >= last_height) {
 
         if (allow_counting) {

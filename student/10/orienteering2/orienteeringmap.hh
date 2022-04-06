@@ -11,6 +11,31 @@
 #############################################################################
 */
 
+/*
+* Program author
+* Name: Veeti Lukin
+* Student number: 50797635
+* UserID: gtvelu
+* E-Mail: veeti.lukin@tuni.fi
+*
+* Notes about the class and it's implementation:
+*   Datastructure that represents an orienteering map and handles information
+*   of points and routes.
+*   This is only a header file.(check orienteeringmap.cpp for class implementation.)
+*
+*   Public interface offers methods to set maps size, add a point to map,
+*   connect 2 points in a route, print the ma, print all routes,
+*   print all points, print specific routes lenght
+*   and greatest method for printing continious rise after a point from all routes.
+*
+*   Points are implemented as struct wich is defined in route.hh.
+*   Routes are implemeted as a class wich has datastructure that points to these points
+*
+*   Points and routes are stored in std::maps inside instance of this class.
+*/
+
+
+
 #ifndef ORIENTEERINGMAP_HH
 #define ORIENTEERINGMAP_HH
 

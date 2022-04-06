@@ -1,3 +1,14 @@
+/*
+* Program author
+* Name: Veeti Lukin
+* Student number: 50797635
+* UserID: gtvelu
+* E-Mail: veeti.lukin@tuni.fi
+*
+* Notes about the class and it's implementation:
+*   This is only class implemention.
+*   Check header file for more infomation.
+*/
 #include "orienteeringmap.hh"
 #include <iostream>
 #include <string>
@@ -5,14 +16,10 @@
 #include <vector>
 
 OrienteeringMap::OrienteeringMap()
-{
-
-}
+{}
 
 OrienteeringMap::~OrienteeringMap()
-{
-
-}
+{}
 
 void OrienteeringMap::set_map_size(int width, int height) {
     width_ = width;
@@ -122,6 +129,7 @@ void OrienteeringMap::route_length(const std::string &name) const {
 
 void OrienteeringMap::greatest_rise(const std::string &point_name) const {
 
+    // there can be multiple routs with same rise after the point
     std::vector<std::string> greates_rise_routes = {};
     int greatest_rise = 0;
 
@@ -155,7 +163,8 @@ void OrienteeringMap::greatest_rise(const std::string &point_name) const {
         return;
     }
 
-    std::cout << "Greatest rise after point " << point_name << "meters, "
+    // print all the routes that had the equal rise to the greatest rise
+    std::cout << "Greatest rise after point " << point_name << " meters, "
               << greatest_rise << ", is on route(s):" << std::endl;
     for (std::string&  route_name : greates_rise_routes) {
         std::cout << " - " << route_name << std::endl;
@@ -170,5 +179,6 @@ char OrienteeringMap::get_marker_for_point(int x, int y) const {
         }
     }
 
+    // marks empty point on map
     return '.';
 }
