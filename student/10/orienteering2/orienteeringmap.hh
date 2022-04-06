@@ -14,7 +14,11 @@
 #ifndef ORIENTEERINGMAP_HH
 #define ORIENTEERINGMAP_HH
 
+#include "route.hh"
+#include "point.hh"
 #include <string>
+#include <unordered_map>
+#include <memory>
 
 class OrienteeringMap
 {
@@ -72,6 +76,15 @@ private:
     unsigned int width_;
     // height of the map
     unsigned int height_;
+
+    // std::map for containing pointers to all Point objects on the map.
+    // name of the point as a key
+    std::unordered_map<std::string, Point*> points = {};
+
+    // std::map for containing pointers to all route object.
+    // routes have pointers for their own orienteering points
+    // name of the route as a key
+    std::unordered_map<std::string, Route*> routes = {};
 };
 
 #endif // ORIENTEERINGMAP_HH

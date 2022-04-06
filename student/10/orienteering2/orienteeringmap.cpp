@@ -15,14 +15,16 @@ void OrienteeringMap::set_map_size(int width, int height) {
     height_ = height;
 }
 
-void OrienteeringMap::add_point(std::string name, int x, int y, int height, char marker)
-{
+void OrienteeringMap::add_point(std::string name, int x, int y, int height,
+                                char marker) {
 
+    if (points.find(name) == points.end()){
+        points.insert({name, Point(name, x, y, marker)});
+    }
 }
 
-bool OrienteeringMap::connect_route(std::string from, std::string to, std::string route_name)
-{
-
+bool OrienteeringMap::connect_route(std::string from, std::string to,
+                                    std::string route_name) {
 }
 
 void OrienteeringMap::print_map() const

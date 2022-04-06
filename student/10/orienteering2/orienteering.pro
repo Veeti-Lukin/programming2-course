@@ -7,11 +7,16 @@ SOURCES += \
     cli.cpp \
     main.cpp \
     orienteeringmap.cpp \
-    parser.cpp
+    parser.cpp \
+    point.cpp \
+    route.cpp
 
 HEADERS += \
     cli.hh \
     orienteeringmap.hh \
-    parser.hh
+    parser.hh \
+    point.hh \
+    route.hh
+
 
 
