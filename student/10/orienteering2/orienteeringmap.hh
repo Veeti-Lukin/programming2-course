@@ -86,9 +86,9 @@ private:
     // Good candidates for such structures are STL maps or vectors.
 
     // width of the map
-    unsigned int width_;
+    int width_;
     // height of the map
-    unsigned int height_;
+    int height_;
 
     // datastructure for containing all Point objects on the map.
     // name of the point as a key
@@ -98,6 +98,10 @@ private:
     // routes have pointers for their own orienteering points
     // name of the route as a key
     std::map<std::string, Route> routes = {};
+
+    // returns corresponding marker for orienteering point at given coordinates
+    // if there is no point at coordinates returns '.'
+    char get_marker_for_point(int x, int y) const;
 };
 
 #endif // ORIENTEERINGMAP_HH
