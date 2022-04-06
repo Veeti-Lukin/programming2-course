@@ -25,6 +25,18 @@ void OrienteeringMap::add_point(std::string name, int x, int y, int height,
 
 bool OrienteeringMap::connect_route(std::string from, std::string to,
                                     std::string route_name) {
+    // check if both point are existing points
+    if (points.find(from) == points.end() || points.find(to) == points.end()) {
+        return false;
+    }
+
+    // check if route already exists
+    if (routes.find(route_name) == routes.end()) {
+        routes.insert({route_name, Route()});
+    }
+
+    routes.at(route_name).add_point(&points.at(to));
+    return true;
 }
 
 void OrienteeringMap::print_map() const

@@ -20,6 +20,7 @@
 #include <unordered_map>
 #include <memory>
 
+
 class OrienteeringMap
 {
 public:
@@ -32,6 +33,7 @@ public:
 
     // Adds a new point in the map, with the given name, position (x and y
     // coordinates), height and marker.
+    // Goes trough only if the point with same name does not exist yet
     void add_point(std::string name, int x, int y, int height, char marker);
 
     // Connects two existing points such that the point 'to' will be
@@ -77,14 +79,14 @@ private:
     // height of the map
     unsigned int height_;
 
-    // std::map for containing pointers to all Point objects on the map.
+    // datastructure for containing all Point objects on the map.
     // name of the point as a key
-    std::unordered_map<std::string, Point*> points = {};
+    std::unordered_map<std::string, Point> points = {};
 
-    // std::map for containing pointers to all route object.
+    // datastucture for containing all route object.
     // routes have pointers for their own orienteering points
     // name of the route as a key
-    std::unordered_map<std::string, Route*> routes = {};
+    std::unordered_map<std::string, Route> routes = {};
 };
 
 #endif // ORIENTEERINGMAP_HH
