@@ -63,9 +63,14 @@ void OrienteeringMap::print_routes() const {
     }
 }
 
-void OrienteeringMap::print_points() const
-{
+void OrienteeringMap::print_points() const {
 
+    std::cout << "Points: " << std::endl;
+
+    for (auto &point_pair : points) {
+        std::cout << " - " << point_pair.second.name_ << " : "
+                  <<  point_pair.second.marker_ << std::endl;
+    }
 }
 
 void OrienteeringMap::print_route(const std::string &name) const {
