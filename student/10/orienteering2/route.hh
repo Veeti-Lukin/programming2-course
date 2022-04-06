@@ -27,11 +27,14 @@ class Route
 public:
     // constructor
     Route();
-    // destructor
+    // destructor deletes Node objects from memory
     ~Route();
 
     // adds a point to the end of the route
     void add_point(Point* new_point);
+
+    // prints all names of the points on this route
+    void print() const;
 
 private:
     // pointer to first orienteering point

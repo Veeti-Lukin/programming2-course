@@ -32,3 +32,21 @@ void Route::add_point(Point* new_point) {
     end_ = new_point_node;
 }
 
+void Route::print() const {
+
+    Node* current = start_;
+
+    // loop trough al the points (or nodes containing points)
+    while (current != nullptr) {
+
+        if (current == start_) {
+            std::cout << current->point->name_ << std::endl;
+
+        }
+        else {
+            std::cout << " -> " << current->point->name_ << std::endl;
+        }
+
+       current = current->next;
+    }
+}

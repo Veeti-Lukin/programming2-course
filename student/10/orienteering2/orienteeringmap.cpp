@@ -1,4 +1,5 @@
 #include "orienteeringmap.hh"
+#include <iostream>
 
 OrienteeringMap::OrienteeringMap()
 {
@@ -45,6 +46,12 @@ void OrienteeringMap::print_map() const
 }
 
 void OrienteeringMap::print_routes() const {
+
+    std::cout << "Routes:" << std::endl;
+
+    for (auto &route_pair : routes) {
+        std::cout << " - " << route_pair.first << std::endl;
+    }
 }
 
 void OrienteeringMap::print_points() const
