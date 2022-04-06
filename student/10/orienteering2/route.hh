@@ -1,7 +1,21 @@
 #ifndef ROUTE_HH
 #define ROUTE_HH
 
-#include "point.hh"
+#include <string>
+
+// models single orienteering point on orienteering map
+struct Point{
+    // name of the point
+    std::string name_;
+    // x coordinate of the point
+    int x_;
+    // y coordinate of the point
+    int y_;
+    // height where point is at
+    int height;
+    // character that marks the point on the map
+    char marker_;
+};
 
 struct Node {
     Point* point;

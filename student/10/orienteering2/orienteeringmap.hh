@@ -15,11 +15,22 @@
 #define ORIENTEERINGMAP_HH
 
 #include "route.hh"
-#include "point.hh"
 #include <string>
 #include <unordered_map>
-#include <memory>
 
+// struct Point is defined in route.hh
+/*struct Point{
+    // name of the point
+    std::string name_;
+    // x coordinate of the point
+    int x_;
+    // y coordinate of the point
+    int y_;
+    // height where point is at
+    int height;
+    // character that marks the point on the map
+    char marker_;
+};*/
 
 class OrienteeringMap
 {

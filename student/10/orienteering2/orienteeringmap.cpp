@@ -19,7 +19,7 @@ void OrienteeringMap::add_point(std::string name, int x, int y, int height,
                                 char marker) {
 
     if (points.find(name) == points.end()){
-        points.insert({name, Point(name, x, y, marker)});
+        points.insert({name, Point({name, x, y, height, marker})});
     }
 }
 
@@ -44,9 +44,7 @@ void OrienteeringMap::print_map() const
 
 }
 
-void OrienteeringMap::print_routes() const
-{
-
+void OrienteeringMap::print_routes() const {
 }
 
 void OrienteeringMap::print_points() const

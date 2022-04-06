@@ -1,4 +1,5 @@
 #include "route.hh"
+#include <iostream>
 
 Route::Route()
 {
@@ -30,3 +31,4 @@ void Route::add_point(Point* new_point) {
     end_->next = new_point_node;
     end_ = new_point_node;
 }
+
