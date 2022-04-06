@@ -31,7 +31,7 @@ public:
     ~Route();
 
     // returns bool depending if route has point with given *name*
-    bool has_point(std::string& name);
+    bool has_point(const std::string& name) const;
 
     // adds a point to the end of the route
     void add_point(Point* new_point);
@@ -41,6 +41,11 @@ public:
 
     // calculates total lenght of the route and returns it
     float get_lenght() const;
+
+    // returns continuous rise, when moving from the given point along the route.
+    // Continuous rise means a partial route, the starting point of which is
+    // the given point and which contains no declivity, just only rise or flat.
+    int get_continious_rise_from_point(const std::string point_name) const;
 
 private:
     // pointer to first orienteering point

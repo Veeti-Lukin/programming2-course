@@ -19,7 +19,7 @@ Route::~Route() {
     }
 }
 
-bool Route::has_point(std::string &name) {
+bool Route::has_point(const std::string &name) const{
 
     Node* current = start_;
 
@@ -88,6 +88,34 @@ float Route::get_lenght() const{
     }
 
     return lenght;
+}
+
+int Route::get_continious_rise_from_point(std::string point_name) const{
+
+    Node* current = start_;
+    int rise = 0;
+    int last_height = 0;
+    bool allow_counting = false;
+
+    // will brake if in end
+    //or if decrease in heigh is detected aka continius rising has ended
+    while (current != nullptr && current->point->height >= last_height) {
+
+        if (allow_counting) {
+            rise += current->point->height - last_height;
+            last_height = current->point->height;
+        }
+
+
+        if (current->point->name_ == point_name) {
+            allow_counting = true;
+            last_height = current->point->height;
+        }
+
+        current = current->next;
+    }
+
+    return rise;
 }
 
 float Route::pythagoras(float x, float y) const{

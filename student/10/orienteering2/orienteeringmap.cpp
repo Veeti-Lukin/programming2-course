@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
+#include <vector>
 
 OrienteeringMap::OrienteeringMap()
 {
@@ -106,8 +107,8 @@ void OrienteeringMap::print_route(const std::string &name) const {
     routes.at(name).print();
 }
 
-void OrienteeringMap::route_length(const std::string &name) const
-{
+void OrienteeringMap::route_length(const std::string &name) const {
+
     // check if route exists
     if (routes.find(name) == routes.end()) {
         std::cout << "Error: Route named " << name << " can't be found"
@@ -115,13 +116,50 @@ void OrienteeringMap::route_length(const std::string &name) const
         return;
     }
 
-    std::cout << "Route " << name << "length was "
+    std::cout << "Route " << name << " length was "
               << std::setprecision(2) << routes.at(name).get_lenght() << std::endl;
 }
 
-void OrienteeringMap::greatest_rise(const std::string &point_name) const
-{
-    point_name.end();
+void OrienteeringMap::greatest_rise(const std::string &point_name) const {
+
+    std::vector<std::string> greates_rise_routes = {};
+    int greatest_rise = 0;
+
+    // find routes with greatest rise after the point
+    for (auto &route_pair : routes) {
+        if(route_pair.second.has_point(point_name)) {
+
+            int routes_rise = route_pair.second.get_continious_rise_from_point(point_name);
+
+            if (routes_rise >= greatest_rise || greates_rise_routes.empty()) {
+
+                if (routes_rise > greatest_rise) {
+                    greates_rise_routes.clear();
+                }
+
+                greatest_rise = routes_rise;
+                greates_rise_routes.push_back(route_pair.first);
+            }
+        }
+    }
+
+    // did not find any routes containing the point
+    if (greates_rise_routes.empty()) {
+        std::cout << "Error: Point named " << point_name << " can't be found"
+                  << std::endl;
+        return;
+    }
+
+    if (greatest_rise == 0) {
+        std::cout << "No route rises after point " << point_name << std::endl;
+        return;
+    }
+
+    std::cout << "Greatest rise after point " << point_name << "meters, "
+              << greatest_rise << ", is on route(s):" << std::endl;
+    for (std::string&  route_name : greates_rise_routes) {
+        std::cout << " - " << route_name << std::endl;
+    }
 }
 
 char OrienteeringMap::get_marker_for_point(int x, int y) const {
