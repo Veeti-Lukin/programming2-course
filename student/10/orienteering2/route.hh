@@ -39,11 +39,17 @@ public:
     // prints all names of the points on this route
     void print() const;
 
+    // calculates total lenght of the route and returns it
+    float get_lenght() const;
+
 private:
     // pointer to first orienteering point
     Node* start_ = nullptr;
     // pointer to last orienteering point
     Node* end_ = nullptr;
+
+    //calculates distance of two points and returns it
+    float pythagoras(float x, float y) const;
 };
 
 #endif // ROUTE_HH

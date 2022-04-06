@@ -1,7 +1,7 @@
 #include "orienteeringmap.hh"
 #include <iostream>
 #include <string>
-
+#include <iomanip>
 
 OrienteeringMap::OrienteeringMap()
 {
@@ -108,7 +108,15 @@ void OrienteeringMap::print_route(const std::string &name) const {
 
 void OrienteeringMap::route_length(const std::string &name) const
 {
-    name.end();
+    // check if route exists
+    if (routes.find(name) == routes.end()) {
+        std::cout << "Error: Route named " << name << " can't be found"
+                  << std::endl;
+        return;
+    }
+
+    std::cout << "Route " << name << "length was "
+              << std::setprecision(2) << routes.at(name).get_lenght() << std::endl;
 }
 
 void OrienteeringMap::greatest_rise(const std::string &point_name) const

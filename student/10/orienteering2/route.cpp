@@ -1,5 +1,6 @@
 #include "route.hh"
 #include <iostream>
+#include <cmath>
 
 Route::Route()
 {
@@ -65,4 +66,32 @@ void Route::print() const {
 
        current = current->next;
     }
+}
+
+float Route::get_lenght() const{
+
+    if(start_ == nullptr) {
+        return 0;
+    }
+
+    float lenght = 0;
+    Node* current = start_;
+
+    // loop trough al the points (or nodes containing points)
+    while (current->next != nullptr) {
+        int delta_x = current->point->x_ - current->next->point->x_;
+        int delta_y = current->point->y_ - current->next->point->y_;
+
+        lenght += pythagoras(delta_x, delta_y);
+
+        current = current->next;
+    }
+
+    return lenght;
+}
+
+float Route::pythagoras(float x, float y) const{
+
+    return sqrt(pow(x, 2) + pow(y, 2));
+
 }
