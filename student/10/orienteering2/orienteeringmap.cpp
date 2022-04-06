@@ -164,8 +164,8 @@ void OrienteeringMap::greatest_rise(const std::string &point_name) const {
     }
 
     // print all the routes that had the equal rise to the greatest rise
-    std::cout << "Greatest rise after point " << point_name << " meters, "
-              << greatest_rise << ", is on route(s):" << std::endl;
+    std::cout << "Greatest rise after point " << point_name << ", "
+              << greatest_rise << " meters, is on route(s):" << std::endl;
     for (std::string&  route_name : greates_rise_routes) {
         std::cout << " - " << route_name << std::endl;
     }
