@@ -67,6 +67,11 @@ private:
     // At least you need a datastructure for points or routes or for both,
     // containing Point* or Route* objects (pointers).
     // Good candidates for such structures are STL maps or vectors.
+
+    // width of the map
+    unsigned int width_;
+    // height of the map
+    unsigned int height_;
 };
 
 #endif // ORIENTEERINGMAP_HH
