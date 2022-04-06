@@ -110,12 +110,12 @@ void OrienteeringMap::print_route(const std::string &name) const {
 
 void OrienteeringMap::route_length(const std::string &name) const
 {
-
+    name.end();
 }
 
 void OrienteeringMap::greatest_rise(const std::string &point_name) const
 {
-
+    point_name.end();
 }
 
 char OrienteeringMap::get_marker_for_point(int x, int y) const {
