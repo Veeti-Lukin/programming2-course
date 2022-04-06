@@ -6,6 +6,7 @@ Route::Route()
 }
 
 Route::~Route() {
+
     while (start_ != nullptr) {
         Node* temp = start_;
         start_ = start_->next;
@@ -15,6 +16,20 @@ Route::~Route() {
         //when OrienteeringMap objects life cycle ends
         delete temp;
     }
+}
+
+bool Route::has_point(std::string &name) {
+
+    Node* current = start_;
+
+    // loop trough al the points (or nodes containing points)
+    while (current != nullptr) {
+        if (name == current->point->name_) {
+            return true;
+        }
+    }
+
+    return false;
 }
 
 void Route::add_point(Point* new_point) {

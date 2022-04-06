@@ -30,6 +30,9 @@ public:
     // destructor deletes Node objects from memory
     ~Route();
 
+    // returns bool depending if route has point with given *name*
+    bool has_point(std::string& name);
+
     // adds a point to the end of the route
     void add_point(Point* new_point);
 
