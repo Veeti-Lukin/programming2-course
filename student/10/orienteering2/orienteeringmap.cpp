@@ -23,7 +23,6 @@ void OrienteeringMap::set_map_size(int width, int height) {
 
 void OrienteeringMap::add_point(std::string name, int x, int y, int height,
                                 char marker) {
-
     if (points.find(name) == points.end()){
         points.insert({name, Point({name, x, y, height, marker})});
     }
@@ -39,6 +38,11 @@ bool OrienteeringMap::connect_route(std::string from, std::string to,
     // check if route already exists
     if (routes.find(route_name) == routes.end()) {
         routes.insert({route_name, Route()});
+    }
+
+    // check if route
+    if (!routes.at(route_name).has_point(from)) {
+        routes.at(route_name).add_point(&points.at(from));
     }
 
     routes.at(route_name).add_point(&points.at(to));

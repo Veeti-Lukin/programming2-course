@@ -27,6 +27,7 @@ bool Route::has_point(std::string &name) {
         if (name == current->point->name_) {
             return true;
         }
+        current = current->next;
     }
 
     return false;
