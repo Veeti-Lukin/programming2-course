@@ -17,16 +17,18 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //connect signals and slots
     connect(timer, &QTimer::timeout, this, &MainWindow::increaseTime);
-
-    timer->setInterval(1000);
-    timer->start();
+    connect(ui->startButton, &QPushButton::pressed, this, &MainWindow::startTimer);
 
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
-    delete timer;
+}
+
+void MainWindow::startTimer() {
+    timer->setInterval(1000);
+    timer->start();
 }
 
 void MainWindow::increaseTime() {

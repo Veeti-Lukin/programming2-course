@@ -24,6 +24,9 @@ public:
 private slots:
     // Add your slots here
 
+    // starts tht clock by setting interval to Qtimer object and strting the coruitine
+    void startTimer();
+
     //increases the time shown by one second
     void increaseTime();
 private:
