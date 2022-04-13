@@ -27,6 +27,9 @@ private slots:
     // starts tht clock by setting interval to Qtimer object and strting the coruitine
     void startTimer();
 
+    //stops the timer and changes next interval of the timer to remaining time to next interval
+    void stopTimer();
+
     //increases the time shown by one second
     void increaseTime();
 private:
