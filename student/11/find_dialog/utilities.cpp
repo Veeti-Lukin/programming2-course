@@ -14,7 +14,7 @@ namespace {
 
 }
 
-bool read_file(std::string &file_name, std::string str_holder) {
+bool read_file(const std::string &file_name, std::string &str_holder) {
 
     std::ifstream file_object(file_name);
 
@@ -27,4 +27,14 @@ bool read_file(std::string &file_name, std::string str_holder) {
 
     str_holder = str_stream.str();
     return true;
+}
+
+bool find_substr(std::string str, std::string substr, bool match_case) {
+
+    if (!match_case) {
+        to_lower(str);
+        to_lower(substr);
+    }
+
+    return str.find(substr) != std::string::npos;
 }

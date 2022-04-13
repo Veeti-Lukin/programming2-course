@@ -90,7 +90,7 @@
        </layout>
       </item>
       <item>
-       <widget class="QCheckBox" name="matchCheckBoc">
+       <widget class="QCheckBox" name="matchCheckBox">
         <property name="text">
          <string>Match case</string>
         </property>
