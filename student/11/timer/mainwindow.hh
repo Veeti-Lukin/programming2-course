@@ -24,6 +24,8 @@ public:
 private slots:
     // Add your slots here
 
+    //increases the time shown by one second
+    void increaseTime();
 private:
     Ui::MainWindow *ui;
     // Add other necessary members here
