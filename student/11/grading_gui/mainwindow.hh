@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_HH
 #define MAINWINDOW_HH
 
+#include "gradecounter.hh"
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
@@ -17,5 +18,8 @@ public:
 
 private:
     Ui::MainWindow *ui;
+
+private slots:
+    void onCountPress();
 };
 #endif // MAINWINDOW_HH
