@@ -1,7 +1,6 @@
 #include "mainwindow.hh"
 #include "ui_mainwindow.h"
-#include <fstream>
-#include <sstream>
+#include "utilities.hh"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -21,33 +20,6 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
-
-bool MainWindow::read_file(const std::string &file_name, std::string &str_holder) {
-
-    std::ifstream file_object(file_name);
-
-    if (!file_object) {
-        // file was not found
-        return false;
-    }
-    std::stringstream str_stream;
-    str_stream << file_object.rdbuf();//read the file
-
-    str_holder = str_stream.str();
-    return true;
-}
-
-bool MainWindow::find_substr(std::string str, std::string substr, bool match_case) {
-
-    if (!match_case) {
-        to_lower(str);
-        to_lower(substr);
-    }
-
-    return str.find(substr) != std::string::npos;
-}
-
-
 
 void MainWindow::onFindPress() {
 
@@ -69,13 +41,5 @@ void MainWindow::onFindPress() {
     }
 
     ui->textBrowser->setText("Word found");
-}
-
-
-void MainWindow::to_lower(std::string &str) {
-
-    for (char &c: str) {
-        c = tolower(c);
-    }
 }
 
