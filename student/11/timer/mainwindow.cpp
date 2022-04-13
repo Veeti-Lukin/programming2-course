@@ -22,6 +22,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->startButton, &QPushButton::pressed, this, &MainWindow::startTimer);
     connect(ui->stopButton, &QPushButton::pressed, this, &MainWindow::stopTimer);
     connect(ui->resetButton, &QPushButton::pressed, this, &MainWindow::resetTimer);
+    connect(ui->closeButton, &QPushButton::pressed, this, &MainWindow::close);
 }
 
 MainWindow::~MainWindow()
