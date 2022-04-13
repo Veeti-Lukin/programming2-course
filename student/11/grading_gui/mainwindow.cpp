@@ -30,6 +30,6 @@ void MainWindow::onCountPress() {
                                                  ui->spinBoxG->value(),
                                                  ui->spinBoxP->value(),
                                                  ui->spinBoxE->value());
-    ui->textBrowser->setText("Total grade:" + QString::number(total_score));
+    ui->textBrowser->setText("Total grade: " + QString::number(total_score));
 }
 
