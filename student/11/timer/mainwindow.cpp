@@ -21,7 +21,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(timer, &QTimer::timeout, this, &MainWindow::increaseTime);
     connect(ui->startButton, &QPushButton::pressed, this, &MainWindow::startTimer);
     connect(ui->stopButton, &QPushButton::pressed, this, &MainWindow::stopTimer);
-
+    connect(ui->resetButton, &QPushButton::pressed, this, &MainWindow::resetTimer);
 }
 
 MainWindow::~MainWindow()
@@ -38,6 +38,12 @@ void MainWindow::stopTimer() {
     int remaining = timer->remainingTime();
     timer->stop();
     timer->setInterval(remaining);
+}
+
+void MainWindow::resetTimer() {
+    ui->lcdNumberMin->display(0);
+    ui->lcdNumberSec->display(0);
+    timer->setInterval(1000);
 }
 
 void MainWindow::increaseTime() {

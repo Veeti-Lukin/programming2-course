@@ -30,6 +30,9 @@ private slots:
     //stops the timer and changes next interval of the timer to remaining time to next interval
     void stopTimer();
 
+    // resets the shown time values to 0 and interval back to 1000ms
+    void resetTimer();
+
     //increases the time shown by one second
     void increaseTime();
 private:
