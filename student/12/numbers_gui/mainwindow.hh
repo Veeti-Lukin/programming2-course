@@ -17,5 +17,9 @@ public:
 
 private:
     Ui::MainWindow *ui;
+
+private slots:
+    void loadGamePage();
+    void loadMenuPage();
 };
 #endif // MAINWINDOW_HH

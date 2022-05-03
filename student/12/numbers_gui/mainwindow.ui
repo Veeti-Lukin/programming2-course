@@ -23,6 +23,9 @@
       <height>571</height>
      </rect>
     </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
     <widget class="QWidget" name="menuPage">
      <widget class="QLabel" name="label">
       <property name="geometry">
@@ -120,7 +123,21 @@ p, li { white-space: pre-wrap; }
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="gamePage"/>
+    <widget class="QWidget" name="gamePage">
+     <widget class="QPushButton" name="menuButton">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Exit to menu</string>
+      </property>
+     </widget>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
