@@ -15,6 +15,7 @@
 
 #include "numbertile.hh"
 #include "gameboard.hh"
+#include <time.h>
 #include <iostream>
 #include <vector>
 #include <random>
