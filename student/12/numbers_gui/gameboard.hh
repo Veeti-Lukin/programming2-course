@@ -5,7 +5,6 @@
 #include <vector>
 #include <random>
 
-const int SIZE = 4;
 const int PRINT_WIDTH = 5;
 const int NEW_VALUE = 2;
 const int DEFAULT_GOAL = 2048;
@@ -46,6 +45,9 @@ public:
     // Returns the element (number tile) in the given coordinates.
     NumberTile* get_item(Coords coords);
 
+    // sets a new size for the gameboard
+    void setSize(unsigned int newSize);
+
 private:
     // Internal structure of the game board
     std::vector<std::vector<NumberTile*>> board_;
@@ -54,6 +56,9 @@ private:
     // they work better, if they are attributes of a class.
     std::default_random_engine randomEng_;
     std::uniform_int_distribution<int> distribution_;
+
+    // size of the gameboard. amount of possible tiles on one row or column
+    int size = 4;
 };
 
 #endif // GAMEBOARD_HH

@@ -23,7 +23,7 @@ public:
     // Moves the number tile in the given direction and merges it, if possible.
     // Returns true, if the player won the game, i.e. if the goal value was
     // reached, otherwise returns false.
-    bool move(Coords direction, int goal_val);
+    bool move(Coords direction, int goal_val, int gameboardSize);
 
     // Sets a new value for an empty number tile.
     // Returns true, if a new value was set, otherwise returns false.
@@ -51,7 +51,7 @@ private:
 
     // Returns true, if the given coordinates are on the gameboard,
     // otherwise returns false.
-    bool is_on_board(Coords coords);
+    bool is_on_board(Coords coords, int gameBoardSize);
 };
 
 #endif // NUMBERTILE_HH

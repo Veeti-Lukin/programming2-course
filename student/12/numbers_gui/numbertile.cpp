@@ -22,11 +22,11 @@ void NumberTile::print(int width)
     std::cout << "|" << std::setw(width - 1) << value_;
 }
 
-bool NumberTile::move(Coords direction, const int goal_val)
+bool NumberTile::move(Coords direction, const int goal_val, int gameboardSize)
 {
     Coords curr_loc = coords_;
     Coords new_loc = coords_ + direction;
-    while( is_on_board( new_loc ) )
+    while( is_on_board( new_loc, gameboardSize ) )
     {
         NumberTile* curr = board_->get_item(curr_loc);
         NumberTile* dest = board_->get_item(new_loc);
@@ -72,8 +72,8 @@ void NumberTile::reset_turn()
     is_merged_ = false;
 }
 
-bool NumberTile::is_on_board(Coords coords)
+bool NumberTile::is_on_board(Coords coords, int gameBoardSize)
 {
-    return coords.first >= 0 and coords.first < SIZE and
-           coords.second >= 0 and coords.second < SIZE;
+    return coords.first >= 0 and coords.first < gameBoardSize and
+           coords.second >= 0 and coords.second < gameBoardSize;
 }

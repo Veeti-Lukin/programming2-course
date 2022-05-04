@@ -1,8 +1,10 @@
 #ifndef MAINWINDOW_HH
 #define MAINWINDOW_HH
 
+#include "gameboard.hh"
 #include <QMainWindow>
 #include <QGraphicsScene>
+#include <vector>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -23,10 +25,19 @@ private:
     QGraphicsScene* scene = nullptr;
     // goal number wich indicates game won if merged to
     int goalNumber = 2048;
-    // seed that will be used to generate the game by random generator
-    int randGenSeed = 0;
     // how many columns and rows the gameboard has
-    int gameboard_size = 4;
+    int gameboardSize = 5;
+    // actual backend gameboard object
+    GameBoard gameboardObject;
+
+
+    std::vector<QRect> visualNumberTiles;
+
+    // draws the background grid for the visual gameboard
+    // *numberTileSideLenght* and
+    // *visualGameboardSideLenght* (QCraphicsview objects side lenght)
+    //must be given
+    void drawGrid(int numberTileSideLenght, int visualGameboardSideLenght);
 
 private slots:
     void loadGamePage();

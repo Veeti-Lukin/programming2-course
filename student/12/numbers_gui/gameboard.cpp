@@ -19,12 +19,14 @@ GameBoard::~GameBoard()
 
 void GameBoard::init_empty()
 {
+    board_.clear();
+
     std::vector<NumberTile*> row;
-    for( int i = 0; i < SIZE; ++i)
+    for( int i = 0; i < size; ++i)
     {
         row.push_back(nullptr);
     }
-    for( int i = 0; i < SIZE; ++i)
+    for( int i = 0; i < size; ++i)
     {
         board_.push_back(row);
     }
@@ -33,20 +35,20 @@ void GameBoard::init_empty()
 void GameBoard::fill(int seed)
 {
     randomEng_.seed(seed);
-    distribution_ = std::uniform_int_distribution<int>(0, SIZE - 1);
+    distribution_ = std::uniform_int_distribution<int>(0, size - 1);
 
     // Wiping out the first random number (which is almost almost 0)
     distribution_(randomEng_);
 
-    for( auto y = 0; y < SIZE; ++y )
+    for( auto y = 0; y < size; ++y )
     {
-        for( auto x = 0; x < SIZE; ++x )
+        for( auto x = 0; x < size; ++x )
         {
             board_.at(y).at(x) = new NumberTile(0, std::make_pair(y, x), this);
         }
     }
 
-    for( int i = 0 ; i < SIZE ; ++i )
+    for( int i = 0 ; i < size ; ++i )
     {
         new_value();
     }
@@ -71,14 +73,14 @@ void GameBoard::print() const
 {
     for( auto y : board_ )
     {
-        std::cout << std::string(PRINT_WIDTH * SIZE + 1, '-') << std::endl;
+        std::cout << std::string(PRINT_WIDTH * size + 1, '-') << std::endl;
         for( auto x : y )
         {
             x->print(PRINT_WIDTH);
         }
         std::cout << "|" << std::endl;
     }
-    std::cout << std::string(PRINT_WIDTH * SIZE + 1, '-') << std::endl;
+    std::cout << std::string(PRINT_WIDTH * size + 1, '-') << std::endl;
 }
 
 bool GameBoard::move(Coords dir, int goal)
@@ -90,7 +92,7 @@ bool GameBoard::move(Coords dir, int goal)
         {
             int directed_y = dir.first > 0 ? board_.size() - y - 1 : y;
             int directed_x = dir.second > 0 ? board_.back().size() - x - 1 : x;
-            if( board_.at(directed_y).at(directed_x)->move(dir, goal) )
+            if( board_.at(directed_y).at(directed_x)->move(dir, goal, size) )
             {
                 has_won = true;
             }
@@ -109,6 +111,11 @@ bool GameBoard::move(Coords dir, int goal)
 NumberTile* GameBoard::get_item(Coords coords)
 {
     return board_.at(coords.first).at(coords.second);
+}
+
+void GameBoard::setSize(unsigned int newSize)
+{
+    size = newSize;
 }
 
 bool GameBoard::is_full() const
