@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="menuPage">
      <widget class="QLabel" name="label">
@@ -127,14 +127,88 @@ p, li { white-space: pre-wrap; }
      <widget class="QPushButton" name="menuButton">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>10</y>
+        <x>90</x>
+        <y>30</y>
         <width>80</width>
         <height>24</height>
        </rect>
       </property>
       <property name="text">
        <string>Exit to menu</string>
+      </property>
+     </widget>
+     <widget class="QGraphicsView" name="gamebooardGraphicsView">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>100</y>
+        <width>450</width>
+        <height>450</height>
+       </rect>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="sizeAdjustPolicy">
+       <enum>QAbstractScrollArea::AdjustToContentsOnFirstShow</enum>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton">
+      <property name="geometry">
+       <rect>
+        <x>360</x>
+        <y>30</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>PushButton</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_2">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>60</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>PushButton</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_3">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>0</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>PushButton</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_4">
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>30</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>PushButton</string>
       </property>
      </widget>
     </widget>
