@@ -30,6 +30,12 @@ private:
     // actual backend gameboard object
     GameBoard gameboardObject;
 
+    // lenght of one side of the QGraphicsview object on ui where
+    // the visual gameborad will be drawn on to
+    int visualGameboardSideLenght;
+
+    // lenght of one side of the visual numbertiles that will be drwn to the ui
+    int numberTileSideLenght;
 
     std::vector<QRect> visualNumberTiles;
 
@@ -37,7 +43,9 @@ private:
     // *numberTileSideLenght* and
     // *visualGameboardSideLenght* (QCraphicsview objects side lenght)
     //must be given
-    void drawGrid(int numberTileSideLenght, int visualGameboardSideLenght);
+    void drawGrid();
+
+    void drawNumberTiles();
 
 private slots:
     void loadGamePage();

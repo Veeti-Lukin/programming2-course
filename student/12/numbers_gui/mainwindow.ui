@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="menuPage">
      <widget class="QLabel" name="label">
@@ -151,7 +151,7 @@ p, li { white-space: pre-wrap; }
       <property name="geometry">
        <rect>
         <x>90</x>
-        <y>100</y>
+        <y>90</y>
         <width>450</width>
         <height>450</height>
        </rect>

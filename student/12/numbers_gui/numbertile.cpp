@@ -72,6 +72,11 @@ void NumberTile::reset_turn()
     is_merged_ = false;
 }
 
+int NumberTile::getValue()
+{
+    return value_;
+}
+
 bool NumberTile::is_on_board(Coords coords, int gameBoardSize)
 {
     return coords.first >= 0 and coords.first < gameBoardSize and

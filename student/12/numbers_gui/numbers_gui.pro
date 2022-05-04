@@ -12,12 +12,14 @@ SOURCES += \
     gameboard.cpp \
     main.cpp \
     mainwindow.cpp \
-    numbertile.cpp
+    numbertile.cpp \
+    visualnumbertile.cpp
 
 HEADERS += \
     gameboard.hh \
     mainwindow.hh \
-    numbertile.hh
+    numbertile.hh \
+    visualnumbertile.hh
 
 FORMS += \
     mainwindow.ui

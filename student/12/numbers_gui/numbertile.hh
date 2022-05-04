@@ -35,6 +35,9 @@ public:
     // Sets the value of is_merged_ as false.
     void reset_turn();
 
+    // returns the <value_> of the numbertile as int
+    int getValue();
+
 private:
     // Value in the number tile
     int value_;
